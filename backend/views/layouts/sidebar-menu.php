@@ -15,36 +15,36 @@ echo Menu::widget(
             ],
             [
                 'label' => '员工管理',
-                'url' => Yii::$app->homeUrl,
+                'url' => ['/employee/index'],
                 'icon' => 'fa-dashboard',
                 'items' => [
                     [
                         'label' => '员工管理',
-                        'url' => ['/dept/index'],
+                        'url' => ['/employee/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]
             ],
             [
             'label' => '部门管理',
-                'url' => Yii::$app->homeUrl,
-                'icon' => 'fa-dashboard',
+                'url' => ['/dept/index'],
+                'icon' => 'fa-folder',
                 'items' => [
                     [
                         'label' => '部门管理',
                         'url' => ['/dept/index'],
-                        'icon' => 'fa fa-user',
+                        'icon' => 'fa fa-tasks',
                     ]
                 ]
             ],
             [
                 'label' => '打卡管理',
                 'url' => Yii::$app->homeUrl,
-                'icon' => 'fa-dashboard',
+                'icon' => 'fa-folder',
                 'items' => [
                     [
                         'label' => '打卡管理',
-                        'url' => ['/dept/index'],
+                        'url' => ['/punch/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]
@@ -52,11 +52,11 @@ echo Menu::widget(
             [
                 'label' => '请假管理',
                 'url' => Yii::$app->homeUrl,
-                'icon' => 'fa-dashboard',
+                'icon' => 'fa-folder',
                 'items' => [
                     [
                         'label' => '请假管理',
-                        'url' => ['/dept/index'],
+                        'url' => ['/leave/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]
@@ -64,23 +64,23 @@ echo Menu::widget(
             [
                 'label' => '物料管理',
                 'url' => Yii::$app->homeUrl,
-                'icon' => 'fa-dashboard',
+                'icon' => 'fa-folder',
                 'items' => [
                     [
                         'label' => '物料管理',
-                        'url' => ['/dept/index'],
+                        'url' => ['/materiel/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]
             ],
             [
-                'label' => '常用系统',
-                'url' => Yii::$app->homeUrl,
-                'icon' => 'fa-dashboard',
+                'label' => '系统列表',
+                'url' => ['/os/index'],
+                'icon' => 'fa-folder',
                 'items' => [
                     [
-                        'label' => '物料系统',
-                        'url' => ['/dept/index'],
+                        'label' => '系统列表',
+                        'url' => ['/os/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]

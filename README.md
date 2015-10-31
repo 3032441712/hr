@@ -11,3 +11,12 @@
 7. 系统中心
 8. 物料发放管理
 9. 日常工作备注
+
+###数据库SQL###
+CREATE TABLE `hr_dept` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(32) NOT NULL DEFAULT '' COMMENT '部门名称',
+  `created_at` datetime NOT NULL COMMENT '创建时间',
+  `updated_at` datetime NOT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='部门';

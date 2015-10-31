@@ -1,6 +1,6 @@
 <?php
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+// use yii\bootstrap\NavBar;
 
 /*NavBar::begin([
     'brandLabel' => 'My Company',
@@ -60,7 +60,7 @@ $menuItemsMain = [
         'visible' => Yii::$app->user->can('admin'),
     ],
 ];
-echo Nav::widget([
+Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-left'],
     'items' => $menuItemsMain,
     'encodeLabels' => false,
