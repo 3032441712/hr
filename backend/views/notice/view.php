@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\HrDept */
+/* @var $model app\models\HrNotice */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => '部门管理', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Hr Notices', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="hr-dept-view">
+<div class="hr-notice-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('删除', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '你确定删除这个元素吗?',
+                'confirm' => '你确定要删除这个元素吗?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,6 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'title',
+            'content:ntext',
+            'status',
             'created_at',
             'updated_at',
         ],

@@ -15,25 +15,46 @@ echo Menu::widget(
             ],
             [
                 'label' => '员工管理',
-                'url' => ['/employee/index'],
-                'icon' => 'fa-dashboard',
+                'url' => ['#'],
+                'icon' => 'fa-users',
+                'options' => [
+                    'class' => 'treeview',
+                 ],
                 'items' => [
                     [
                         'label' => '员工管理',
-                        'url' => ['/employee/index'],
+                        'url' => ['/user/index'],
                         'icon' => 'fa fa-user',
                     ]
                 ]
             ],
             [
             'label' => '部门管理',
-                'url' => ['/dept/index'],
+                'url' => ['#'],
                 'icon' => 'fa-folder',
+                'options' => [
+                    'class' => 'treeview',
+                 ],
                 'items' => [
                     [
                         'label' => '部门管理',
                         'url' => ['/dept/index'],
-                        'icon' => 'fa fa-tasks',
+                        'icon' => 'fa fa-folder-o',
+                    ]
+                ]
+            ],
+            [
+                'label' => '公告管理',
+                'url' => ['#'],
+                'icon' => 'fa fa-envelope',
+                'options' => [
+                    'class' => 'treeview',
+                 ],
+                'items' => [
+                    [
+                        'label' => '公告管理',
+                        'url' => ['/notice/index'],
+                        'icon' => 'fa fa-envelope-o',
                     ]
                 ]
             ],
@@ -94,12 +115,6 @@ echo Menu::widget(
                 ],
                 'visible' => Yii::$app->user->can('admin'),
                 'items' => [
-                    [
-                        'label' => Yii::t('app', 'User'),
-                        'url' => ['/user/index'],
-                        'icon' => 'fa fa-user',
-                        //'visible' => (Yii::$app->user->identity->username == 'admin'),
-                    ],
                     [
                         'label' => Yii::t('app', 'Role'),
                         'url' => ['/role/index'],

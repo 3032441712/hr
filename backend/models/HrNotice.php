@@ -6,21 +6,23 @@ use Yii;
 use app\components\DateTimeModel;
 
 /**
- * This is the model class for table "{{%dept}}".
+ * This is the model class for table "hr_notice".
  *
- * @property string $id
+ * @property integer $id
  * @property string $title
+ * @property string $content
+ * @property integer $status
  * @property string $created_at
  * @property string $updated_at
  */
-class HrDept extends DateTimeModel
+class HrNotice extends DateTimeModel
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%dept}}';
+        return 'hr_notice';
     }
 
     /**
@@ -29,9 +31,11 @@ class HrDept extends DateTimeModel
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'required'],
+            [['title', 'content'], 'required'],
+            [['content'], 'string'],
+            [['status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['title'], 'string', 'max' => 32]
+            [['title'], 'string', 'max' => 64]
         ];
     }
 
@@ -41,8 +45,10 @@ class HrDept extends DateTimeModel
     public function attributeLabels()
     {
         return [
-            'id' => '主键',
-            'title' => '部门名称',
+            'id' => 'ID',
+            'title' => '标题',
+            'content' => '内容',
+            'status' => '状态',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
