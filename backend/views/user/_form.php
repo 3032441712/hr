@@ -21,7 +21,29 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
+    
+    <?= $form->field($model, 'sex')->textInput() ?>
 
+    <?= $form->field($model, 'country')->textInput() ?>
+
+    <?= $form->field($model, 'province')->textInput() ?>
+
+    <?= $form->field($model, 'city')->textInput() ?>
+
+    <?= $form->field($model, 'district')->textInput() ?>
+
+    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'qq')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'office_phone')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'home_phone')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'mobile_phone')->textInput(['maxlength' => true]) ?>
+    
     <?= $form->field($model, 'role')->dropDownList(User::getArrayRole()) ?>
 
     <?= $form->field($model, 'status')->dropDownList(User::getArrayStatus()) ?>

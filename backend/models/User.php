@@ -9,6 +9,19 @@ use yii\helpers\ArrayHelper;
  *
  * @property integer $id
  * @property string $username
+ * @property integer $sex
+ * @property string $last_login
+ * @property string $last_ip
+ * @property integer $country
+ * @property integer $province
+ * @property integer $city
+ * @property integer $district
+ * @property string $address
+ * @property string $zipcode
+ * @property string $qq
+ * @property string $office_phone
+ * @property string $home_phone
+ * @property string $mobile_phone
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -72,6 +85,10 @@ class User extends \common\models\User
     {
         return [
             [['username', 'email'], 'required'],
+            [['sex', 'country', 'province', 'city', 'district'], 'integer'],
+            [['last_login'], 'safe'],
+            [['last_ip', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'string', 'max' => 20],
+            [['zipcode'], 'string', 'max' => 60],
             [['password', 'repassword'], 'required', 'on' => ['admin-create']],
             [['username', 'email', 'password', 'repassword'], 'trim'],
             [['password', 'repassword'], 'string', 'min' => 6, 'max' => 30],
@@ -115,7 +132,20 @@ class User extends \common\models\User
             $labels,
             [
                 'password' => Yii::t('app', 'Password'),
-                'repassword' => Yii::t('app', 'Repassword')
+                'repassword' => Yii::t('app', 'Repassword'),
+                'sex' => '性别',
+                'last_login' => '上次登陆时间',
+                'last_ip' => '上次登录的IP地址',
+                'country' => '国家',
+                'province' => '省份',
+                'city' => '城市',
+                'district' => '区域',
+                'address' => '地址',
+                'zipcode' => '邮政编码',
+                'qq' => 'QQ',
+                'office_phone' => '办公电话',
+                'home_phone' => '家庭电话',
+                'mobile_phone' => '手机',
             ]
         );
     }
