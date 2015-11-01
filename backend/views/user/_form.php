@@ -3,11 +3,19 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\models\User;
-use yii\helpers\ArrayHelper;
+use app\models\HrDept;
+use yii\web\JqueryAsset;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerCssFile('@web/adminlte/css/datepicker/datepicker3.css');
+$this->registerJsFile("@web/adminlte/js/plugins/datepicker/bootstrap-datepicker.js", ['depends' => JqueryAsset::className()]);
+$this->registerJsFile("@web/adminlte/js/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js", ['depends' => JqueryAsset::className()]);
+$this->registerJs('
+    $("#birthday").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
+');
 ?>
 
 <div class="user-form">
@@ -16,13 +24,17 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
 
+    <?= $form->field($model, 'dept_id')->dropDownList(HrDept::getArrayDept()) ?>
+
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => 255]) ?>
-    
-    <?= $form->field($model, 'sex')->textInput() ?>
+
+    <?= $form->field($model, 'sex')->dropDownList(User::getArraySex()) ?>
+
+    <?= $form->field($model, 'birthday')->textInput(['id' => 'birthday']) ?>
 
     <?= $form->field($model, 'country')->textInput() ?>
 

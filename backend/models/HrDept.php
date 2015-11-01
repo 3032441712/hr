@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\components\DateTimeModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "{{%dept}}".
@@ -29,7 +30,7 @@ class HrDept extends DateTimeModel
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'required'],
+            [['title'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['title'], 'string', 'max' => 32]
         ];
@@ -46,5 +47,15 @@ class HrDept extends DateTimeModel
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
+    }
+
+    /**
+     * 获取部门数据
+     *
+     * @return array
+     */
+    public static function getArrayDept()
+    {
+        return ArrayHelper::map(self::find()->select('id, title')->asArray()->all(), 'id', 'title');
     }
 }

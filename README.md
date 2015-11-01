@@ -16,8 +16,10 @@
 
 CREATE TABLE IF NOT EXISTS `hr_user` (
   `id` int(11) NOT NULL,
+  `dept_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '部门',
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sex` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
+  `birthday` date NOT NULL COMMENT '生日',
   `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次登陆时间',
   `last_ip` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '上次登录的IP地址',
   `country` smallint(6) NOT NULL DEFAULT '0' COMMENT '国家',

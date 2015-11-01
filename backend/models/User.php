@@ -3,13 +3,16 @@ namespace backend\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use app\models\HrDept;
 
 /**
  * User model
  *
  * @property integer $id
+ * @property integer $dept_id
  * @property string $username
  * @property integer $sex
+ * @property string $birthday
  * @property string $last_login
  * @property string $last_ip
  * @property integer $country
@@ -38,6 +41,8 @@ class User extends \common\models\User
     public $repassword;
     private $_statusLabel;
     private $_roleLabel;
+    private $_sexLabel;
+    private $_deptLabel;
 
     /**
      * @inheritdoc
@@ -79,18 +84,55 @@ class User extends \common\models\User
     }
 
     /**
+     * 获取员工性别标题
+     */
+    public function getSexLabel()
+    {
+        if ($this->_sexLabel == null) {
+            $sex = self::getArraySex();
+            $this->_sexLabel = $sex[$this->sex];
+        }
+
+        return $this->_sexLabel;
+    }
+
+    /**
+     * 获取性别
+     * 
+     * @return array
+     */
+    public static function getArraySex()
+    {
+        return [
+            0 => '男',
+            1 => '女'
+        ];
+    }
+
+    public function getDeptLabel()
+    {
+        if ($this->_deptLabel == null) {
+            $dept = HrDept::getArrayDept();
+            $this->_deptLabel = $dept[$this->dept_id];
+        }
+
+        return $this->_deptLabel;
+    }
+
+    /**
       * @inheritdoc
       */
     public function rules()
     {
         return [
-            [['username', 'email'], 'required'],
-            [['sex', 'country', 'province', 'city', 'district'], 'integer'],
-            [['last_login'], 'safe'],
+            [['username', 'birthday', 'email'], 'required'],
+            [['dept_id', 'sex', 'country', 'province', 'city', 'district'], 'integer'],
+            [['birthday', 'last_login'], 'safe'],
             [['last_ip', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'string', 'max' => 20],
             [['zipcode'], 'string', 'max' => 60],
+            ['address', 'string', 'max' => 255],
             [['password', 'repassword'], 'required', 'on' => ['admin-create']],
-            [['username', 'email', 'password', 'repassword'], 'trim'],
+            [['username', 'email', 'password', 'repassword', 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'trim'],
             [['password', 'repassword'], 'string', 'min' => 6, 'max' => 30],
             // Unique
             [['username', 'email'], 'unique'],
@@ -116,8 +158,16 @@ class User extends \common\models\User
     public function scenarios()
     {
         return [
-            'admin-create' => ['username', 'email', 'password', 'repassword', 'status', 'role'],
-            'admin-update' => ['username', 'email', 'password', 'repassword', 'status', 'role']
+            'admin-create' => [
+                'username', 'email', 'password', 'repassword', 'status', 'role',
+                'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
+                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
+            ],
+            'admin-update' => [
+                'username', 'email', 'password', 'repassword', 'status', 'role',
+                'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
+                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
+            ]
         ];
     }
 
@@ -133,7 +183,9 @@ class User extends \common\models\User
             [
                 'password' => Yii::t('app', 'Password'),
                 'repassword' => Yii::t('app', 'Repassword'),
+                'dept_id' => '部门',
                 'sex' => '性别',
+                'birthday' => '生日',
                 'last_login' => '上次登陆时间',
                 'last_ip' => '上次登录的IP地址',
                 'country' => '国家',

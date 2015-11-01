@@ -28,6 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'username',
+            [
+                'attribute' => 'dept_id',
+                'value' => $model->deptLabel,
+            ],
             //'auth_key',
             //'password_hash',
             //'password_reset_token',
@@ -40,6 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => $model->statusLabel,
             ],
+            [
+                'attribute' => 'sex',
+                'value' => $model->sexLabel,
+            ],
+            'birthday',
             'country',
             'province',
             'city',
