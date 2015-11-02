@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
 
-$this->title = Yii::t('app', 'Update ') . Yii::t('app', 'User') . ' ' . $model->username;
+$this->title = Yii::t('app', 'Update ') . Yii::t('app', 'User') . ' ' . $model->real_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
@@ -15,5 +15,4 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
-
 </div>

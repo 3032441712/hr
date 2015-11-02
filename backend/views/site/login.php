@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="header"><?php echo Html::encode($this->title); ?></div>
     <?php $form = ActiveForm::begin(); ?>
     <div class="body bg-gray">
-        <?= $form->field($model, 'username')->textInput(['placeholder' => $model->getAttributeLabel('username')])->label(false) ?>
+        <?= $form->field($model, 'uid')->textInput(['placeholder' => $model->getAttributeLabel('uid')])->label(false) ?>
         <?= $form->field($model, 'password')->passwordInput(['placeholder' => $model->getAttributeLabel('password')])->label(false) ?>
         <?= $form->field($model, 'rememberMe')->checkbox() ?>
     </div>

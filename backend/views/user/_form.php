@@ -17,12 +17,19 @@ $this->registerJs('
     $("#birthday").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
 ');
 ?>
-
+<style>
+<!--
+div.area-control select{
+	display: inline-block;
+	width: 33%;
+}
+-->
+</style>
 <div class="user-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'real_name')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'dept_id')->dropDownList(HrDept::getArrayDept()) ?>
 
@@ -36,13 +43,20 @@ $this->registerJs('
 
     <?= $form->field($model, 'birthday')->textInput(['id' => 'birthday']) ?>
 
-    <?= $form->field($model, 'country')->textInput() ?>
-
-    <?= $form->field($model, 'province')->textInput() ?>
-
-    <?= $form->field($model, 'city')->textInput() ?>
-
-    <?= $form->field($model, 'district')->textInput() ?>
+    <div class="form-group field-user-country">
+        <label for="user-role" class="control-label">籍贯</label>
+        <div class="area-control">
+            <select class="form-control" id="user-province" name="User[province]">
+                <option>省份</option>
+            </select>
+            <select class="form-control" id="user-city" name="User[city]">
+                <option>城市</option>
+            </select>
+            <select class="form-control" id="user-district" name="User[district]">
+                <option>区域</option>
+            </select>
+        </div>
+    </div>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 

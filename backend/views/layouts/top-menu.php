@@ -15,7 +15,7 @@ $menuItems = [
         'url' => ['/site/index']
     ],
     [
-        'label' => Yii::t('app', 'Logout') . '(' . Yii::$app->user->identity->username . ')',
+        'label' => Yii::t('app', 'Logout') . '(' . Yii::$app->user->identity->real_name . ')',
         'url' => ['/site/logout'],
         'linkOptions' => ['data-method' => 'post']
     ]

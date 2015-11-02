@@ -10,7 +10,7 @@ use app\models\HrDept;
  *
  * @property integer $id
  * @property integer $dept_id
- * @property string $username
+ * @property string $real_name
  * @property integer $sex
  * @property string $birthday
  * @property string $last_login
@@ -125,20 +125,19 @@ class User extends \common\models\User
     public function rules()
     {
         return [
-            [['username', 'birthday', 'email'], 'required'],
+            [['birthday', 'email'], 'required'],
             [['dept_id', 'sex', 'country', 'province', 'city', 'district'], 'integer'],
             [['birthday', 'last_login'], 'safe'],
             [['last_ip', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'string', 'max' => 20],
             [['zipcode'], 'string', 'max' => 60],
             ['address', 'string', 'max' => 255],
             [['password', 'repassword'], 'required', 'on' => ['admin-create']],
-            [['username', 'email', 'password', 'repassword', 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'trim'],
+            [['real_name', 'email', 'password', 'repassword', 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'trim'],
             [['password', 'repassword'], 'string', 'min' => 6, 'max' => 30],
             // Unique
-            [['username', 'email'], 'unique'],
-            // Username
-            ['username', 'match', 'pattern' => '/^[a-zA-Z0-9_-]+$/'],
-            ['username', 'string', 'min' => 3, 'max' => 30],
+            [['email'], 'unique'],
+            // RealName
+            ['real_name', 'string', 'min' => 2, 'max' => 30],
             // E-mail
             ['email', 'string', 'max' => 100],
             ['email', 'email'],
@@ -159,12 +158,12 @@ class User extends \common\models\User
     {
         return [
             'admin-create' => [
-                'username', 'email', 'password', 'repassword', 'status', 'role',
+                'real_name', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
                 'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
                 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
             ],
             'admin-update' => [
-                'username', 'email', 'password', 'repassword', 'status', 'role',
+                'real_name', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
                 'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
                 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
             ]
@@ -181,6 +180,7 @@ class User extends \common\models\User
         return array_merge(
             $labels,
             [
+                'real_name' => '姓名',
                 'password' => Yii::t('app', 'Password'),
                 'repassword' => Yii::t('app', 'Repassword'),
                 'dept_id' => '部门',
@@ -192,7 +192,7 @@ class User extends \common\models\User
                 'province' => '省份',
                 'city' => '城市',
                 'district' => '区域',
-                'address' => '地址',
+                'address' => '户籍居住地址',
                 'zipcode' => '邮政编码',
                 'qq' => 'QQ',
                 'office_phone' => '办公电话',

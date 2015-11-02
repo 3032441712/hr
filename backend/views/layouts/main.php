@@ -77,7 +77,7 @@ AppAsset::register($this);
                 <div class="user-panel">
                     <div class="pull-left info">
                         <p>
-                            <?= Yii::t('app', 'Hello, {name}', ['name' => Yii::$app->user->identity->username]) ?>
+                            <?= Yii::t('app', 'Hello, {name}', ['name' => Yii::$app->user->identity->real_name]) ?>
                         </p>
                         <a>
                             <i class="fa fa-circle text-success"></i> <?= Yii::t('app', 'Online') ?>
