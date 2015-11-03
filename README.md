@@ -49,3 +49,12 @@ CREATE TABLE `hr_dept` (
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='部门';
+
+CREATE TABLE IF NOT EXISTS `hr_notice` (
+  `id` int(10) unsigned NOT NULL,
+  `title` varchar(64) NOT NULL COMMENT '标题',
+  `content` tinytext NOT NULL COMMENT '内容',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='公告';
