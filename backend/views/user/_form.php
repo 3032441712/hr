@@ -62,13 +62,13 @@ div.area-control select{
     <div class="form-group field-user-country">
         <label for="user-role" class="control-label">籍贯</label>
         <div class="area-control">
-            <select class="form-control" id="user-province" name="User[province]" data="2">
+            <select class="form-control" id="user-province" name="User[province]" data="<?php echo ($model->province > 0 ? $model->province : 2)?>">
                 <option>省份</option>
             </select>
-            <select class="form-control" id="user-city" name="User[city]" data="52">
+            <select class="form-control" id="user-city" name="User[city]" data="<?php echo ($model->city > 0 ? $model->city : 52)?>">
                 <option>城市</option>
             </select>
-            <select class="form-control" id="user-district" name="User[district]" data="500">
+            <select class="form-control" id="user-district" name="User[district]" data="<?php echo ($model->district > 0 ? $model->district : 500)?>">
                 <option>区域</option>
             </select>
         </div>
