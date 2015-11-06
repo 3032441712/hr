@@ -15,7 +15,9 @@ use backend\models\User;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'master_user')->dropDownList(User::getArrayUser()) ?>
+    <?php if ($model->id) :?>
+    <?= $form->field($model, 'master_user')->dropDownList(User::getArrayUser($model->id)) ?>
+    <?php endif;?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? '创建' : '编辑', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

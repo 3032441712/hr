@@ -16,15 +16,20 @@ echo Menu::widget(
             [
                 'label' => '员工管理',
                 'url' => ['#'],
-                'icon' => 'fa-users',
+                'icon' => 'fa-user',
                 'options' => [
                     'class' => 'treeview',
                  ],
                 'items' => [
                     [
+                        'label' => '添加员工',
+                        'url' => ['/user/create'],
+                        'icon' => 'fa fa-plus-square-o',
+                    ],
+                    [
                         'label' => '员工管理',
                         'url' => ['/user/index'],
-                        'icon' => 'fa fa-user',
+                        'icon' => 'fa fa-table',
                     ]
                 ]
             ],
@@ -37,9 +42,14 @@ echo Menu::widget(
                  ],
                 'items' => [
                     [
+                        'label' => '添加部门',
+                        'url' => ['/dept/create'],
+                        'icon' => 'fa fa-plus-square-o',
+                    ],
+                    [
                         'label' => '部门管理',
                         'url' => ['/dept/index'],
-                        'icon' => 'fa fa-folder-o',
+                        'icon' => 'fa fa-table',
                     ]
                 ]
             ],
