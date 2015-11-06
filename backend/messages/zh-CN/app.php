@@ -21,8 +21,8 @@ return [
     'Please Select' => '请选择',
     'No Option' => '无',
 
-    'Create ' => '创建',
-    'Create' => '创建',
+    'Create ' => '添加',
+    'Create' => '添加',
     'Update ' => '更新',
     'Update' => '更新',
     'Delete' => '删除',
@@ -38,8 +38,8 @@ return [
 
     'System' => '系统',
     'Settings' => '设置',
-    'User' => '用户',
-    'Users' => '用户',
+    'User' => '员工',
+    'Users' => '员工',
     'Role' => '角色',
     'Roles' => '角色',
     'Auth Role' => '角色',

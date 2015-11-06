@@ -21,9 +21,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
             'title',
+            [
+                'attribute' => 'master_user',
+                'value' => function ($model) {
+                    return $model->getUserLabel();
+                }
+            ],
             'created_at',
             'updated_at',
 

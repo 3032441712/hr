@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use backend\models\User;
+use app\models\HrRegion;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\User */
@@ -49,11 +49,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->sexLabel,
             ],
             'birthday',
-            'country',
-            'province',
-            'city',
-            'district',
-            'address',
+            [
+                'label' => '户籍所在地',
+                'attribute' => 'address',
+                'value' => HrRegion::getAreaTitle([$model->province,$model->city,$model->district]).' '.$model->address
+            ],
             'zipcode',
             'qq',
             'office_phone',

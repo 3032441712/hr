@@ -109,6 +109,11 @@ class User extends \common\models\User
         ];
     }
 
+    public static function getArrayUser()
+    {
+        return ArrayHelper::map(self::find()->select('id, real_name')->onCondition('id <> 1')->asArray()->all(), 'id', 'real_name');
+    }
+
     public function getDeptLabel()
     {
         if ($this->_deptLabel == null) {
