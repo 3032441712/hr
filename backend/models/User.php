@@ -182,11 +182,12 @@ class User extends \common\models\User
     public static function getArrayJobStation($deptId)
     {
         $data = [0 => '请选择'];
-        if (empty($deptId) == false) {
-            
+        if (empty($deptId)) {
+            $deptId = 2;
         }
+        $data = HrDeptStation::find()->onCondition(['dept_id' => $deptId])->select('id, title')->asArray()->all();
         
-        return $data;
+        return ArrayHelper::map($data, 'id', 'title');
     }
 
     /**

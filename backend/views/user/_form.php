@@ -33,6 +33,14 @@ $this->registerJs('
         $(this).attr("data", $(this).val());
         init_area("user-province", "user-city", "user-district");
     });
+    $("#dept_id").change(function(){
+        $("#job_station").empty();
+        $.get("index.php?r=dept-station/dept", {dept_id: $(this).val()}, function(data){
+            for (k in data) {
+                $("#job_station").append("<option value=\'"+data[k].id+"\'>"+data[k].title+"</option>");
+            }
+        }, "json");
+    });
 ');
 ?>
 <style>
@@ -51,7 +59,7 @@ div.area-control select{
     
     <?= $form->field($model, 'job_number', ['labelOptions' => ['label' => '工号']])->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'dept_id')->dropDownList(HrDept::getArrayDept()) ?>
+    <?= $form->field($model, 'dept_id')->dropDownList(HrDept::getArrayDept(), ['id' => 'dept_id']) ?>
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => 255]) ?>
 
@@ -100,7 +108,7 @@ div.area-control select{
     
     <?= $form->field($model, 'job_type')->dropDownList(User::getArrayJobType()) ?>
     
-    <?= $form->field($model, 'job_station')->dropDownList(User::getArrayJobStation($model->dept_id)) ?>
+    <?= $form->field($model, 'job_station')->dropDownList(User::getArrayJobStation($model->dept_id), ['id' => 'job_station']) ?>
     
     <?= $form->field($model, 'job_level')->dropDownList(User::getArrayJobLevel()) ?>
     

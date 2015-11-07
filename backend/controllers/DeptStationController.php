@@ -106,6 +106,18 @@ class DeptStationController extends Controller
 
         return $this->redirect(['index']);
     }
+    
+    public function actionDept()
+    {
+        $deptId = Yii::$app->request->get('dept_id', 0);
+        $data = HrDeptStation::find()->onCondition(['dept_id' => $deptId])->select('id, title')->asArray()->all();
+        
+        if (empty($data)) {
+            $data = [['id' => '0', 'title' => '无']];
+        }
+        
+        return json_encode($data);
+    }
 
     /**
      * Finds the HrDeptStation model based on its primary key value.
