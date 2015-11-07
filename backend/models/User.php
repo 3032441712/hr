@@ -13,6 +13,7 @@ use app\models\HrDept;
  * @property string $real_name
  * @property integer $sex
  * @property string $birthday
+ * @property integer $marital_status
  * @property string $last_login
  * @property string $last_ip
  * @property integer $country
@@ -25,6 +26,13 @@ use app\models\HrDept;
  * @property string $office_phone
  * @property string $home_phone
  * @property string $mobile_phone
+ * @property string $entry_time
+ * @property string $salary_time
+ * @property integer $working_status
+ * @property integer $job_type
+ * @property integer $job_station
+ * @property integer $job_level
+ * @property integer $attendance_type
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -123,6 +131,63 @@ class User extends \common\models\User
 
         return $this->_deptLabel;
     }
+    
+    public static function getArrayMaritalStatus()
+    {
+        return [
+            0 => '未婚',
+            1 => '已婚',
+            2 => '离异',
+            3 => '丧偶'
+        ];
+    }
+    
+    public static function getArrayWorkingStatus()
+    {
+        return [
+            0 => '在职',
+            1 => '辞职',
+            2 => '离休'
+        ];
+    }
+    
+    public static function getArrayJobLevel()
+    {
+        return [
+            0 => '初级',
+            1 => '中级',
+            2 => '高级',
+            3 => '专家'
+        ];
+    }
+    
+    public static function getArrayJobType()
+    {
+        return [
+            0 => '临时工',
+            1 => '实习生',
+            2 => '正式员工'
+        ];
+    }
+    
+    public static function getArrayAttendanceType()
+    {
+        return [
+            0 => '正常班',
+            1 => '轮班制',
+            2 => '执行班'
+        ];
+    }
+    
+    public static function getArrayJobStation($deptId)
+    {
+        $data = [0 => '请选择'];
+        if (empty($deptId) == false) {
+            
+        }
+        
+        return $data;
+    }
 
     /**
       * @inheritdoc
@@ -130,10 +195,10 @@ class User extends \common\models\User
     public function rules()
     {
         return [
-            [['birthday', 'email'], 'required'],
-            [['dept_id', 'sex', 'country', 'province', 'city', 'district'], 'integer'],
-            [['birthday', 'last_login'], 'safe'],
-            [['last_ip', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'string', 'max' => 20],
+            [['birthday', 'email', 'entry_time', 'salary_time'], 'required'],
+            [['dept_id', 'job_number', 'sex', 'country', 'province', 'city', 'district', 'marital_status', 'working_status', 'job_type', 'job_station', 'job_level', 'attendance_type'], 'integer'],
+            [['birthday', 'last_login', 'entry_time', 'salary_time'], 'safe'],
+            [['last_ip', 'qq', 'office_phone', 'home_phone', 'mobile_phone', 'marital_status'], 'string', 'max' => 20],
             [['zipcode'], 'string', 'max' => 60],
             ['address', 'string', 'max' => 255],
             [['password', 'repassword'], 'required', 'on' => ['admin-create']],
@@ -163,14 +228,16 @@ class User extends \common\models\User
     {
         return [
             'admin-create' => [
-                'real_name', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
+                'real_name', 'job_number', 'marital_status', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
                 'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
-                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
+                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone', 'working_status', 
+                'job_type', 'job_station', 'job_level', 'attendance_type', 'entry_time', 'salary_time'
             ],
             'admin-update' => [
-                'real_name', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
+                'real_name', 'job_number', 'marital_status', 'birthday', 'email', 'password', 'repassword', 'status', 'role',
                 'sex', 'last_login', 'last_ip', 'country', 'province', 'city', 'district', 'dept_id',
-                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
+                'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone', 'working_status', 
+                'job_type', 'job_station', 'job_level', 'attendance_type', 'entry_time', 'salary_time'
             ]
         ];
     }
@@ -186,11 +253,13 @@ class User extends \common\models\User
             $labels,
             [
                 'real_name' => '姓名',
+                'job_number' => '员工工号',
                 'password' => Yii::t('app', 'Password'),
                 'repassword' => Yii::t('app', 'Repassword'),
                 'dept_id' => '部门',
                 'sex' => '性别',
                 'birthday' => '生日',
+                'marital_status' => '婚姻状况',
                 'last_login' => '上次登陆时间',
                 'last_ip' => '上次登录的IP地址',
                 'country' => '国家',
@@ -203,6 +272,13 @@ class User extends \common\models\User
                 'office_phone' => '办公电话',
                 'home_phone' => '家庭电话',
                 'mobile_phone' => '手机',
+                'entry_time' => '入职时间',
+                'salary_time' => '起薪时间',
+                'working_status' => '在职状态',
+                'job_type' => '员工类型',
+                'job_station' => '员工岗位',
+                'job_level' => '职称级别',
+                'attendance_type' => '考勤类型',
             ]
         );
     }

@@ -50,7 +50,17 @@ echo Menu::widget(
                         'label' => '部门管理',
                         'url' => ['/dept/index'],
                         'icon' => 'fa fa-table',
-                    ]
+                    ],
+                    [
+                        'label' => '添加岗位',
+                        'url' => ['/dept-station/create'],
+                        'icon' => 'fa fa-plus-square-o',
+                    ],
+                    [
+                        'label' => '岗位管理',
+                        'url' => ['/dept-station/index'],
+                        'icon' => 'fa fa-table',
+                    ],
                 ]
             ],
             [

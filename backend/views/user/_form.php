@@ -16,6 +16,8 @@ $this->registerJsFile("@web/adminlte/js/plugins/datepicker/locales/bootstrap-dat
 $this->registerJsFile("@web/js/area.js", ['depends' => JqueryAsset::className()]);
 $this->registerJs('
     $("#birthday").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
+    $("#entry_time").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
+    $("#salary_time").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
     init_area("user-province", "user-city", "user-district");
     $("#user-province").change(function() {
         v = $(this).val();
@@ -46,6 +48,8 @@ div.area-control select{
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'real_name')->textInput(['maxlength' => 255]) ?>
+    
+    <?= $form->field($model, 'job_number', ['labelOptions' => ['label' => '工号']])->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'dept_id')->dropDownList(HrDept::getArrayDept()) ?>
 
@@ -58,6 +62,8 @@ div.area-control select{
     <?= $form->field($model, 'sex')->dropDownList(User::getArraySex()) ?>
 
     <?= $form->field($model, 'birthday')->textInput(['id' => 'birthday']) ?>
+    
+    <?= $form->field($model, 'marital_status')->dropDownList(User::getArrayMaritalStatus()) ?>
 
     <div class="form-group field-user-country">
         <label for="user-role" class="control-label">籍贯</label>
@@ -85,6 +91,20 @@ div.area-control select{
     <?= $form->field($model, 'home_phone')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'mobile_phone')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'entry_time')->textInput(['id' => 'entry_time']) ?>
+    
+    <?= $form->field($model, 'salary_time')->textInput(['id' => 'salary_time']) ?>
+    
+    <?= $form->field($model, 'working_status')->dropDownList(User::getArrayWorkingStatus()) ?>
+    
+    <?= $form->field($model, 'job_type')->dropDownList(User::getArrayJobType()) ?>
+    
+    <?= $form->field($model, 'job_station')->dropDownList(User::getArrayJobStation($model->dept_id)) ?>
+    
+    <?= $form->field($model, 'job_level')->dropDownList(User::getArrayJobLevel()) ?>
+    
+    <?= $form->field($model, 'attendance_type')->dropDownList(User::getArrayAttendanceType()) ?>
     
     <?= $form->field($model, 'role')->dropDownList(User::getArrayRole()) ?>
 

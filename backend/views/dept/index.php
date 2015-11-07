@@ -32,7 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at',
             'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn' , 
+                'template' => '{station} {view} {update} {delete}',
+                'buttons' => [
+                    'station' => function ($url, $model, $key) {
+                        return Html::a('<span title="岗位" class="glyphicon glyphicon-list"></span>', $url);
+                    }
+                ]
+            ],
         ],
     ]); ?>
 
