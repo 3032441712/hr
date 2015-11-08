@@ -174,7 +174,7 @@ class User extends \common\models\User
             3 => '正式员工'
         ];
     }
-    
+
     public static function getArrayAttendanceType()
     {
         return [
@@ -184,7 +184,7 @@ class User extends \common\models\User
             3 => '执行班'
         ];
     }
-    
+
     public static function getArrayJobStation($deptId)
     {
         $data = [0 => '请选择'];
@@ -212,7 +212,7 @@ class User extends \common\models\User
             [['real_name', 'email', 'password', 'repassword', 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'], 'trim'],
             [['password', 'repassword'], 'string', 'min' => 6, 'max' => 30],
             // Unique
-            [['email'], 'unique'],
+            [['email', 'job_number'], 'unique'],
             // RealName
             ['real_name', 'string', 'min' => 2, 'max' => 30],
             // E-mail
