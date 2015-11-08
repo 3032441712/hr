@@ -5,10 +5,11 @@ namespace backend\controllers;
 use Yii;
 use backend\models\User;
 use backend\models\UserSearch;
-use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\components\CController;
+use app\models\HrLog;
+use yii\data\ActiveDataProvider;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -112,6 +113,17 @@ class UserController extends CController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionLog()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => HrLog::find()->onCondition(['exec_action' => 'user'])->orderBy('id DESC'),
+        ]);
+
+        return $this->render('log', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**

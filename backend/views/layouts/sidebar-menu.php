@@ -33,7 +33,7 @@ echo Menu::widget(
                     ],
                     [
                         'label' => '操作日志',
-                        'url' => ['/usr/log'],
+                        'url' => ['/user/log'],
                         'icon' => 'fa fa-minus-square-o',
                     ]
                 ]
