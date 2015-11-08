@@ -76,7 +76,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $logArrayData = HrLog::find()->onCondition(['exec_action' => HrLog::LOGIN_ACTION, 'user_id' => Yii::$app->user->id])->orderBy('id DESC')->limit(5)->all();
+
+        return $this->render('index',[
+            'logArrayData' => $logArrayData
+        ]);
     }
 
     public function actionLogin()
