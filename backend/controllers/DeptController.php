@@ -5,18 +5,18 @@ namespace backend\controllers;
 use Yii;
 use app\models\HrDept;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\components\CController;
 
 /**
  * DeptController implements the CRUD actions for HrDept model.
  */
-class DeptController extends Controller
+class DeptController extends CController
 {
     public function behaviors()
     {
-        return [
+        $verbs = [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -24,6 +24,8 @@ class DeptController extends Controller
                 ],
             ],
         ];
+
+        return array_merge(parent::behaviors(), $verbs);
     }
 
     /**

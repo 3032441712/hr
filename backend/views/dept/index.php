@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'master_user',
                 'value' => function ($model) {
-                    return $model->getUserLabel();
+                    return $model->userLabel;
                 }
             ],
             'created_at',

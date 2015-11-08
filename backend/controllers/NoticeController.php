@@ -5,18 +5,18 @@ namespace backend\controllers;
 use Yii;
 use app\models\HrNotice;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\components\CController;
 
 /**
  * NoticeController implements the CRUD actions for HrNotice model.
  */
-class NoticeController extends Controller
+class NoticeController extends CController
 {
     public function behaviors()
     {
-        return [
+        $verbs = [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -24,6 +24,8 @@ class NoticeController extends Controller
                 ],
             ],
         ];
+
+        return array_merge(parent::behaviors(), $verbs);
     }
 
     /**

@@ -4,21 +4,20 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\HrDeptStation;
-use yii\data\ActiveDataProvider;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use backend\models\HrDeptStationSearch;
 use app\models\HrDept;
+use app\components\CController;
 
 /**
  * DeptStationController implements the CRUD actions for HrDeptStation model.
  */
-class DeptStationController extends Controller
+class DeptStationController extends CController
 {
     public function behaviors()
     {
-        return [
+        $verbs = [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -26,6 +25,8 @@ class DeptStationController extends Controller
                 ],
             ],
         ];
+
+        return array_merge(parent::behaviors(), $verbs);
     }
 
     /**

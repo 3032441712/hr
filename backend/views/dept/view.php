@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                 'attribute' => 'master_user',
-                'value' => $model->getUserLabel()
+                'value' => $model->userLabel
             ],
             'title',
             'created_at',
