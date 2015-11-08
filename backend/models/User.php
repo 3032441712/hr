@@ -136,47 +136,52 @@ class User extends \common\models\User
     public static function getArrayMaritalStatus()
     {
         return [
-            0 => '未婚',
-            1 => '已婚',
-            2 => '离异',
-            3 => '丧偶'
+            0 => '请选择',
+            1 => '未婚',
+            2 => '已婚',
+            3 => '离异',
+            4 => '丧偶'
         ];
     }
     
     public static function getArrayWorkingStatus()
     {
         return [
-            0 => '在职',
-            1 => '辞职',
-            2 => '离休'
+            0 => '请选择',
+            1 => '在职',
+            2 => '辞职',
+            3 => '离休'
         ];
     }
     
     public static function getArrayJobLevel()
     {
         return [
-            0 => '初级',
-            1 => '中级',
-            2 => '高级',
-            3 => '专家'
+            0 => '请选择',
+            1 => '初级',
+            2 => '中级',
+            3 => '高级',
+            4 => '专家'
         ];
     }
     
     public static function getArrayJobType()
     {
         return [
-            0 => '临时工',
-            1 => '实习生',
-            2 => '正式员工'
+            0 => '请选择',
+            1 => '临时工',
+            2 => '实习生',
+            3 => '正式员工'
         ];
     }
     
     public static function getArrayAttendanceType()
     {
         return [
-            0 => '正常班',
-            1 => '轮班制',
-            2 => '执行班'
+            0 => '请选择',
+            1 => '正常班',
+            2 => '轮班制',
+            3 => '执行班'
         ];
     }
     
