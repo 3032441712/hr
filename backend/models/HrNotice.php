@@ -53,4 +53,9 @@ class HrNotice extends DateTimeModel
             'updated_at' => '更新时间',
         ];
     }
+    
+    public static function getLastNoticeArray()
+    {
+        return self::find()->orderBy('id DESC')->limit('1')->asArray()->one();
+    }
 }

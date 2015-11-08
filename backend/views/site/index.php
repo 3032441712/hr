@@ -1,4 +1,5 @@
 <?php
+use app\models\HrNotice;
 /* @var $this yii\web\View */
 
 $this->title = '欢迎使用人力资源管理系统';
@@ -19,19 +20,25 @@ $this->title = '欢迎使用人力资源管理系统';
                 <p></p>
             </div>
         </div>
+        <?php
+            $notice = HrNotice::getLastNoticeArray();
+            if (empty($notice)) {
+                $notice = ['title' => '最新公告', 'content' => '暂未发表公告', 'created_at' => date('Y-m-d H:i:s')];
+            }
+        ?>
         <div class="row">
             <div class="col-md-4" style="width: 100%;">
                 <!-- Info box -->
                 <div class="box box-solid box-info">
                     <div class="box-header">
-                        <h3 class="box-title">最新公告</h3>
+                        <h3 class="box-title"><?php echo $notice['title']?> &nbsp; <span style="font-size: 12px;"><?php echo $notice['created_at']?></span></h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-info btn-sm" style="display: none;" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
-                    <div class="box-body">
-                        最近天气越来越冷了,大家要多添加衣物,以免感冒.
+                    <div class="box-body" style="font-size: 14px;">
+                        <?php echo nl2br($notice['content'])?>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div><!-- /.col -->
