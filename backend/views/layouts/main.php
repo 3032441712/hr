@@ -75,6 +75,9 @@ AppAsset::register($this);
             <section class="sidebar">
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="adminlte/img/avatar3.png" class="img-circle" alt="User Image">
+                    </div>
                     <div class="pull-left info">
                         <p>
                             <?= Yii::t('app', 'Hello, {name}', ['name' => Yii::$app->user->identity->real_name]) ?>
