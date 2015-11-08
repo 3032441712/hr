@@ -26,8 +26,6 @@ class HrLog extends DateTimeModel
 
     const DEPT_ACTION = 'dept';
 
-    const DEPT_STATION_ACTION = 'dept_station';
-
     const NOTICE_ACTION = 'notice';
     
     private $_userLabel;
