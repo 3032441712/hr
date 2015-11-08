@@ -4,6 +4,7 @@ namespace backend\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use app\models\HrDept;
+use app\models\HrLog;
 
 /**
  * User model
@@ -298,5 +299,23 @@ class User extends \common\models\User
             return true;
         }
         return false;
+    }
+
+    /**
+     * 数据保存之后写入日志文件
+     * 
+     * @return void
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $content = '';
+        if ($insert) {
+            $content = '新增用户: '.$this->real_name.'('.$this->id.')';
+        } else {
+            $content = '编辑用户: '.$this->real_name.'('.$this->id.'), 修改前数据:'.json_encode($changedAttributes);
+        }
+
+        HrLog::saveSystemLog(HrLog::USER_ACTION, $content);
+        parent::afterSave($insert, $changedAttributes);
     }
 }
