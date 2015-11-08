@@ -3,6 +3,7 @@ namespace app\models;
 
 use Yii;
 use app\components\DateTimeModel;
+use backend\models\User;
 
 /**
  * This is the model class for table "{{%log}}".
@@ -28,6 +29,17 @@ class HrLog extends DateTimeModel
     const DEPT_STATION_ACTION = 'dept_station';
 
     const NOTICE_ACTION = 'notice';
+    
+    private $_userLabel;
+    
+    public function getUserLabel()
+    {
+        if ($this->_userLabel == null) {
+            $this->_userLabel = User::findIdentity($this->user_id)->real_name;
+        }
+
+        return $this->_userLabel;
+    }
 
     /**
      * @inheritdoc

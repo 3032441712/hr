@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -15,13 +14,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             'id',
-            'exec_action',
             [
                 'attribute' => 'content',
                 'value' => function($model) {
                     return mb_substr($model->content, 0, 11, 'UTF-8').'...';
                 }
             ],
+            [
+                'label' => '操作人',
+                'attribute' => 'user_id',
+                'value' => function($model) {
+                    return $model->userLabel.'('.$model->user_id.')';
+                }
+            ],
+            'ip_address',
             'created_at',
         ],
     ]); ?>
