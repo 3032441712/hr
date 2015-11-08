@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 部门管理,实现对部门数据的增删改查.
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\controllers;
 
 use Yii;
@@ -10,7 +21,15 @@ use yii\filters\VerbFilter;
 use app\components\CController;
 
 /**
- * DeptController implements the CRUD actions for HrDept model.
+ * 部门管理,实现对部门数据的增删改查.
+ *
+ * PHP version 5.5
+ * 
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @link     https://github.com/3032441712/hr
  */
 class DeptController extends CController
 {

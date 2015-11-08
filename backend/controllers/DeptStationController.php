@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 部门岗位管理,实现对部门岗位数据的增删改查.
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\controllers;
 
 use Yii;
@@ -11,7 +22,15 @@ use app\models\HrDept;
 use app\components\CController;
 
 /**
- * DeptStationController implements the CRUD actions for HrDeptStation model.
+ * 部门岗位管理,实现对部门岗位数据的增删改查.
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @link     https://github.com/3032441712/hr
  */
 class DeptStationController extends CController
 {

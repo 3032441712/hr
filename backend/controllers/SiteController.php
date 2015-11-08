@@ -1,4 +1,16 @@
 <?php
+/**
+ * 站点登录,等出功能页面
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\controllers;
 
 use Yii;
@@ -9,7 +21,15 @@ use yii\filters\VerbFilter;
 use app\models\HrLog;
 
 /**
- * Site controller
+ * 站点登录,等出功能页面
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @link     https://github.com/3032441712/hr
  */
 class SiteController extends Controller
 {

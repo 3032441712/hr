@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 员工管理,实现对员工数据的增删改查.
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\controllers;
 
 use Yii;
@@ -12,7 +23,15 @@ use app\models\HrLog;
 use yii\data\ActiveDataProvider;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * 员工管理,实现对员工数据的增删改查.
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @link     https://github.com/3032441712/hr
  */
 class UserController extends CController
 {
