@@ -6,6 +6,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
+use app\models\HrLog;
 
 /**
  * Site controller
@@ -68,6 +69,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            HrLog::saveSystemLog(HrLog::LOGIN_ACTION, Yii::$app->user->identity->real_name.' 登录系统');
             return $this->goBack();
         } else {
             return $this->render('login', [

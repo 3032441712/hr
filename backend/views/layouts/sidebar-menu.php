@@ -30,6 +30,11 @@ echo Menu::widget(
                         'label' => '员工管理',
                         'url' => ['/user/index'],
                         'icon' => 'fa fa-table',
+                    ],
+                    [
+                        'label' => '操作日志',
+                        'url' => ['/usr/log'],
+                        'icon' => 'fa fa-minus-square-o',
                     ]
                 ]
             ],
@@ -61,6 +66,11 @@ echo Menu::widget(
                         'url' => ['/dept-station/index'],
                         'icon' => 'fa fa-table',
                     ],
+                    [
+                        'label' => '操作日志',
+                        'url' => ['/dept/log'],
+                        'icon' => 'fa fa-minus-square-o',
+                    ]
                 ]
             ],
             [
@@ -75,6 +85,11 @@ echo Menu::widget(
                         'label' => '公告管理',
                         'url' => ['/notice/index'],
                         'icon' => 'fa fa-envelope-o',
+                    ],
+                    [
+                        'label' => '操作日志',
+                        'url' => ['/notice/log'],
+                        'icon' => 'fa fa-minus-square-o',
                     ]
                 ]
             ],
