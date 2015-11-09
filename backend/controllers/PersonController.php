@@ -59,9 +59,14 @@ class PersonController extends CController
         }
     }
 
-    public function actionRead()
+    /**
+     * 查看员工手册
+     * 
+     * @return mixed
+     */
+    public function actionBook()
     {
-        return $this->renderPartial('read');
+        return $this->renderPartial('book');
     }
 
     /**

@@ -9,6 +9,13 @@ $menuItems = [
         'url' => ['/site/index']
     ],
     [
+        'label' => '员工手册',
+        'url' => ['/person/book'],
+        'linkOptions' => [
+            'target' => '_blank'
+        ]
+    ],
+    [
         'label' => '<i class="glyphicon glyphicon-user"></i> <span>'.Yii::$app->user->identity->real_name.'</span> ',
         'url' => ['#'],
         'active' => false,
