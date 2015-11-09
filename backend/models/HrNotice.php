@@ -58,4 +58,22 @@ class HrNotice extends DateTimeModel
     {
         return self::find()->orderBy('id DESC')->limit('1')->asArray()->one();
     }
+
+    /**
+     * 数据保存之后写入日志文件
+     *
+     * @return void
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $content = '';
+        if ($insert) {
+            $content = '新增公告: '.$this->title.'('.$this->id.')';
+        } else {
+            $content = '编辑公告 '.$this->title.'('.$this->id.'), 修改前数据:'.json_encode($changedAttributes);
+        }
+    
+        HrLog::saveSystemLog(HrLog::NOTICE_ACTION, $content);
+        parent::afterSave($insert, $changedAttributes);
+    }
 }
