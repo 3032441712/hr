@@ -21,7 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'dept_id',
+            [
+                'attribute' => 'dept_id',
+                'value' => $model->deptLabel,
+            ],
             'job_number',
             [
                 'attribute' => 'real_name',
@@ -75,16 +78,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '状态',
                 'value' => $model->statusLabel
             ],
-            [
-                'attribute' => 'created_at',
-                'label' => '创建时间',
-                'value' => date('Y-m-d H:i:s', $model->created_at)
-            ],
-            [
-                'attribute' => 'updated_at',
-                'label' => '更新时间',
-                'value' => date('Y-m-d H:i:s', $model->updated_at)
-            ],
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 

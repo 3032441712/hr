@@ -117,7 +117,7 @@ class UserBaseModel extends DateTimeModel
     {
         if ($this->_jobStationLabel == null) {
             $jobStationLabel = User::getArrayJobStation($this->dept_id);
-            $this->_jobStationLabel = $jobStationLabel[$this->job_station];
+            $this->_jobStationLabel = isset($jobStationLabel[$this->job_station]) ? $jobStationLabel[$this->job_station] : '暂无';
         }
     
         return $this->_jobStationLabel;
@@ -257,7 +257,7 @@ class UserBaseModel extends DateTimeModel
             $deptId = 2;
         }
         $data = HrDeptStation::find()->onCondition(['dept_id' => $deptId])->select('id, title')->asArray()->all();
-    
+
         return ArrayHelper::map($data, 'id', 'title');
     }
 }

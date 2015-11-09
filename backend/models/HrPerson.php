@@ -98,7 +98,7 @@ class HrPerson extends UserBaseModel
             'id' => 'ID',
             'dept_id' => '部门',
             'job_number' => '员工工号',
-            'real_name' => 'Real Name',
+            'real_name' => '姓名',
             'sex' => '性别',
             'birthday' => '生日',
             'marital_status' => '婚姻状况',
@@ -127,8 +127,8 @@ class HrPerson extends UserBaseModel
             'email' => 'Email',
             'role' => 'Role',
             'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
         ];
     }
 
