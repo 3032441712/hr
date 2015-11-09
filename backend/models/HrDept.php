@@ -73,4 +73,22 @@ class HrDept extends DateTimeModel
     {
         return ArrayHelper::map(self::find()->select('id, title')->asArray()->all(), 'id', 'title');
     }
+
+    /**
+     * 数据保存之后写入日志文件
+     *
+     * @return void
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $content = '';
+        if ($insert) {
+            $content = '新增部门: '.$this->title.'('.$this->id.')';
+        } else {
+            $content = '编辑部门: '.$this->title.'('.$this->id.'), 修改前数据:'.json_encode($changedAttributes);
+        }
+
+        HrLog::saveSystemLog(HrLog::DEPT_ACTION, $content);
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

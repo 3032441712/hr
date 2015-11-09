@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '部门岗位';
+$this->title = '岗位管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hr-dept-station-index">

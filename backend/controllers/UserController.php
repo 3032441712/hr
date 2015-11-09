@@ -137,7 +137,7 @@ class UserController extends CController
     public function actionLog()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => HrLog::find()->onCondition(['exec_action' => 'user'])->orderBy('id DESC'),
+            'query' => HrLog::find()->onCondition(['exec_action' => HrLog::USER_ACTION])->orderBy('id DESC'),
         ]);
 
         return $this->render('log', [

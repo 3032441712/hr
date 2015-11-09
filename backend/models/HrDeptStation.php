@@ -5,6 +5,7 @@ namespace backend\models;
 use Yii;
 use app\components\DateTimeModel;
 use app\models\HrDept;
+use app\models\HrLog;
 
 /**
  * This is the model class for table "{{%dept_station}}".
@@ -61,5 +62,23 @@ class HrDeptStation extends DateTimeModel
         }
         
         return $this->_deptLabel;
+    }
+
+    /**
+     * 数据保存之后写入日志文件
+     *
+     * @return void
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        $content = '';
+        if ($insert) {
+            $content = '新增岗位: '.$this->title.'('.$this->id.')';
+        } else {
+            $content = '编辑岗位: '.$this->title.'('.$this->id.'), 修改前数据:'.json_encode($changedAttributes);
+        }
+
+        HrLog::saveSystemLog(HrLog::DEPT_ACTION, $content);
+        parent::afterSave($insert, $changedAttributes);
     }
 }

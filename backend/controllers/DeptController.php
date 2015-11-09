@@ -19,6 +19,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\components\CController;
+use app\models\HrLog;
 
 /**
  * 部门管理,实现对部门数据的增删改查.
@@ -122,6 +123,17 @@ class DeptController extends CController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    public function actionLog()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => HrLog::find()->onCondition(['exec_action' => HrLog::DEPT_ACTION])->orderBy('id DESC'),
+        ]);
+
+        return $this->render('log', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
