@@ -97,6 +97,7 @@ echo Menu::widget(
                 'label' => '打卡管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
+                'visible' => Yii::$app->user->can('admin'),
                 'items' => [
                     [
                         'label' => '打卡管理',
@@ -109,6 +110,7 @@ echo Menu::widget(
                 'label' => '请假管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
+                'visible' => Yii::$app->user->can('admin'),
                 'items' => [
                     [
                         'label' => '请假管理',
@@ -121,6 +123,7 @@ echo Menu::widget(
                 'label' => '物料管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
+                'visible' => Yii::$app->user->can('admin'),
                 'items' => [
                     [
                         'label' => '物料管理',
@@ -133,6 +136,7 @@ echo Menu::widget(
                 'label' => '系统列表',
                 'url' => ['/os/index'],
                 'icon' => 'fa-folder',
+                'visible' => Yii::$app->user->can('admin'),
                 'items' => [
                     [
                         'label' => '系统列表',
