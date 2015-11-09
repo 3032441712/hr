@@ -53,13 +53,11 @@ $this->title = '欢迎使用人力资源管理系统';
                         <table class="table table-condensed">
                             <tbody>
                             <tr>
-                                <th>登录信息</th>
                                 <th>登录IP</th>
-                                <th style="width: 15%">登录时间</th>
+                                <th style="width: 35%">登录时间</th>
                             </tr>
                             <?php foreach ($logArrayData as $item):?>
                             <tr>
-                                <td><?php echo $item['content']?></td>
                                 <td><?php echo $item['ip_address']?></td>
                                 <td><?php echo $item['created_at']?></td>
                             </tr>
