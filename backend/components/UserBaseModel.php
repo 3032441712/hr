@@ -39,30 +39,95 @@ class UserBaseModel extends DateTimeModel
     
     const ROLE_USER = 10;
     
+    /**
+     * 用户密码
+     * 
+     * @var string
+     */
     public $password;
     
+    /**
+     * 重复输入密码
+     * 
+     * @var string
+     */
     public $repassword;
     
+    /**
+     * 角色名称
+     * 
+     * @var string
+     */
     private $_roleLabel;
     
+    /**
+     * 部门名称
+     * 
+     * @var string
+     */
     private $_deptLabel;
     
+    /**
+     * 状态名称
+     * 
+     * @var string
+     */
     private $_statusLabel;
     
+    /**
+     * 婚姻状态
+     * 
+     * @var string
+     */
     private $_maritalStatusLabel;
     
+    /**
+     * 性别
+     * 
+     * @var string
+     */
     private $_sexLabel;
     
+    /**
+     * 工作状态
+     * 
+     * @var string
+     */
     private $_workingStatusLabel;
     
+    /**
+     * 工作类型
+     * 
+     * @var string
+     */
     private $_jobTypeLabel;
     
+    /**
+     * 岗位名称
+     * 
+     * @var string
+     */
     private $_jobStationLabel;
     
+    /**
+     * 岗位级别
+     * 
+     * @var string
+     */
     private $_jobLevelLabel;
     
+    /**
+     * 考勤类型
+     * 
+     * @var string
+     */
     private $_attendanceTypeLabel;
     
+    /**
+     * 视图中来获取员工的账号状态
+     * 
+     * @return string
+     */
     public function getStatusLabel()
     {
         if ($this->_statusLabel == null) {
@@ -73,6 +138,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_statusLabel;
     }
     
+    /**
+     * 视图中用来获取员工的婚姻状态
+     * 
+     * @return string
+     */
     public function getMaritalStatusLabel()
     {
         if ($this->_maritalStatusLabel == null) {
@@ -83,6 +153,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_maritalStatusLabel;
     }
     
+    /**
+     * 视图中用来获取用户的性别
+     * 
+     * @return string
+     */
     public function getSexLabel()
     {
         if ($this->_sexLabel == null) {
@@ -93,6 +168,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_sexLabel;
     }
     
+    /**
+     * 视图中获取员工的在职状态
+     * 
+     * @return string
+     */
     public function getWorkingStatusLabel()
     {
         if ($this->_workingStatusLabel == null) {
@@ -103,6 +183,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_workingStatusLabel;
     }
     
+    /**
+     * 视图中获取员工的类型
+     * 
+     * @return string
+     */
     public function getJobTypeLabel()
     {
         if ($this->_jobTypeLabel == null) {
@@ -113,6 +198,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_jobTypeLabel;
     }
     
+    /**
+     * 视图中获取员工的岗位信息
+     * 
+     * @return string
+     */
     public function getJobStationLabel()
     {
         if ($this->_jobStationLabel == null) {
@@ -123,6 +213,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_jobStationLabel;
     }
     
+    /**
+     * 视图中获取职称级别
+     * 
+     * @return string
+     */
     public function getJobLevelLabel()
     {
         if ($this->_jobLevelLabel == null) {
@@ -133,6 +228,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_jobLevelLabel;
     }
     
+    /**
+     * 视图中获取员工相关考勤的类型
+     * 
+     * @return string
+     */
     public function getAttendanceTypeLabel()
     {
         if ($this->_attendanceTypeLabel == null) {
@@ -144,7 +244,9 @@ class UserBaseModel extends DateTimeModel
     }
     
     /**
-     * @inheritdoc
+     * 获取员工状态的数组
+     * 
+     * @return array
      */
     public static function getArrayStatus()
     {
@@ -155,11 +257,21 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取员工相关的角色数组
+     * 
+     * @return array
+     */
     public static function getArrayRole()
     {
         return ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'description');
     }
     
+    /**
+     * 视图中获取角色名称
+     * 
+     * @return string
+     */
     public function getRoleLabel()
     {
     
@@ -183,11 +295,23 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取某个部门的员工数据
+     * 
+     * @param integer $deptId 部门ID
+     * 
+     * @return array
+     */
     public static function getArrayUser($deptId)
     {
         return ArrayHelper::map(self::find()->select('id, real_name')->onCondition('id <> 1 AND dept_id = '.$deptId)->asArray()->all(), 'id', 'real_name');
     }
     
+    /**
+     * 视图中获取员工相关的部门名称
+     * 
+     * @return string
+     */
     public function getDeptLabel()
     {
         if ($this->_deptLabel == null) {
@@ -198,6 +322,11 @@ class UserBaseModel extends DateTimeModel
         return $this->_deptLabel;
     }
     
+    /**
+     * 获取员工的所有婚姻状态列表
+     * 
+     * @return array
+     */
     public static function getArrayMaritalStatus()
     {
         return [
@@ -209,6 +338,11 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取员工的所有在职状态
+     * 
+     * @return array
+     */
     public static function getArrayWorkingStatus()
     {
         return [
@@ -219,6 +353,11 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取所有的员工职称级别
+     * 
+     * @return array
+     */    
     public static function getArrayJobLevel()
     {
         return [
@@ -230,6 +369,11 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取员工类型列表
+     * 
+     * @return array
+     */
     public static function getArrayJobType()
     {
         return [
@@ -240,6 +384,11 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取所有的考勤类型
+     * 
+     * @return array
+     */
     public static function getArrayAttendanceType()
     {
         return [
@@ -250,6 +399,13 @@ class UserBaseModel extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取某个部门下的所有工作岗位
+     * 
+     * @param integer $deptId 部门ID
+     * 
+     * @return array
+     */
     public static function getArrayJobStation($deptId)
     {
         $data = [0 => '请选择'];
