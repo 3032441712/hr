@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -37,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{station} {view} {update} {delete}',
                 'buttons' => [
                     'station' => function ($url, $model, $key) {
-                        return Html::a('<span title="岗位" class="glyphicon glyphicon-list"></span>', $url);
+                        return Html::a('<span title="岗位" class="glyphicon glyphicon-list"></span>', Url::to(['dept-station/index', 'HrDeptStationSearch[dept_id]' => $model->id]));
                     }
                 ]
             ],
