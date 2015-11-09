@@ -122,8 +122,7 @@ class UserController extends CController
     }
 
     /**
-     * 删除员工信息,目前不支持员工信息的删除.
-     * 本功能目前属于禁用状态.
+     * 删除员工信息,逻辑删除.
      * 
      * @param integer $id
      * 
@@ -140,6 +139,11 @@ class UserController extends CController
         return $this->redirect(['index']);
     }
 
+    /**
+     * 操作日志
+     * 
+     * @return mixed
+     */
     public function actionLog()
     {
         $dataProvider = new ActiveDataProvider([

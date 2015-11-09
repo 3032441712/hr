@@ -63,6 +63,18 @@ class HrDeptStation extends DateTimeModel
         
         return $this->_deptLabel;
     }
+    
+    /**
+     * 根据主键ID获取岗位名称
+     * 
+     * @param integer $id 主键ID
+     * 
+     * @return string
+     */
+    public static function getTitleByPrimaryKey($id)
+    {
+        return self::findOne(['id' => $id])->title;
+    }
 
     /**
      * 数据保存之后写入日志文件

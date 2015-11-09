@@ -1,7 +1,7 @@
 <?php
 use yii\bootstrap\Nav;
-use yii\helpers\Url;
 use yii\helpers\Html;
+use backend\models\HrDeptStation;
 
 $menuItems = [
     [
@@ -14,7 +14,7 @@ $menuItems = [
         'active' => false,
         'items' => [
             [
-                'label' => '<li class="user-header bg-light-blue"><img src="adminlte/img/avatar3.png" class="img-circle" alt="User Image"><p>'.Yii::$app->user->identity->real_name.' - PHP工程师<small>入职时间 2015-10-01</small></p></li>'
+                'label' => '<li class="user-header bg-light-blue"><img src="adminlte/img/avatar3.png" class="img-circle" alt="User Image"><p>'.Yii::$app->user->identity->real_name.' - '.(Yii::$app->user->identity->job_station ? HrDeptStation::getTitleByPrimaryKey(Yii::$app->user->identity->job_station) : '暂无岗位').'<small>入职时间 '.(Yii::$app->user->identity->entry_time != '' ? Yii::$app->user->identity->entry_time : '暂无').'</small></p></li>'
             ],
             [
                 'label' => '<li class="user-footer"><div class="pull-left">'.Html::a('个人信息', ['person/view', 'id' => Yii::$app->user->id], ['class' => 'btn btn-default btn-flat']).'</div><div class="pull-right">'.Html::a('注销系统', ['site/logout'], ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']).'</div></li>'
