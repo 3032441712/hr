@@ -48,6 +48,22 @@ class HrPerson extends DateTimeModel
     public $password;
 
     public $repassword;
+    
+    private $_statusLabel;
+    
+    private $_maritalStatusLabel;
+    
+    private $_sexLabel;
+    
+    private $_workingStatusLabel;
+    
+    private $_jobTypeLabel;
+    
+    private $_jobStationLabel;
+    
+    private $_jobLevelLabel;
+    
+    private $_attendanceTypeLabel;
 
     /**
      * @inheritdoc
@@ -92,7 +108,87 @@ class HrPerson extends DateTimeModel
             ]
         ];
     }
-
+    
+    public function getStatusLabel()
+    {
+        if ($this->_statusLabel == null) {
+            $statusLabel = User::getArrayStatus();
+            $this->_statusLabel = $statusLabel[$this->status];
+        }
+        
+        return $this->_statusLabel;
+    }
+    
+    public function getMaritalStatusLabel()
+    {
+        if ($this->_maritalStatusLabel == null) {
+            $maritalStatusLabel = User::getArrayMaritalStatus();
+            $this->_maritalStatusLabel = $maritalStatusLabel[$this->marital_status];
+        }
+        
+        return $this->_maritalStatusLabel;
+    }
+    
+    public function getSexLabel()
+    {
+        if ($this->_sexLabel == null) {
+            $sexLabel = User::getArraySex();
+            $this->_sexLabel = $sexLabel[$this->sex];
+        }
+        
+        return $this->_sexLabel;
+    }
+    
+    public function getWorkingStatusLabel()
+    {
+        if ($this->_workingStatusLabel == null) {
+            $workingStatusLabel = User::getArrayWorkingStatus();
+            $this->_workingStatusLabel = $workingStatusLabel[$this->working_status];
+        }
+        
+        return $this->_workingStatusLabel;
+    }
+    
+    public function getJobTypeLabel()
+    {
+        if ($this->_jobTypeLabel == null) {
+            $jobTypeLabel = User::getArrayJobType();
+            $this->_jobTypeLabel = $jobTypeLabel[$this->job_type];
+        }
+        
+        return $this->_jobTypeLabel;
+    }
+    
+    public function getJobStationLabel()
+    {
+        if ($this->_jobStationLabel == null) {
+            $jobStationLabel = User::getArrayJobStation($this->dept_id);
+            $this->_jobStationLabel = $jobStationLabel[$this->job_station];
+        }
+        
+        return $this->_jobStationLabel;
+    }
+    
+    public function getJobLevelLabel()
+    {
+        if ($this->_jobLevelLabel == null) {
+            $jobLevelLabel = User::getArrayJobLevel();
+            $this->_jobLevelLabel = $jobLevelLabel[$this->job_level];
+        }
+        
+        return $this->_jobLevelLabel;
+    }
+    
+    public function getAttendanceTypeLabel()
+    {
+        if ($this->_attendanceTypeLabel == null) {
+            $attendanceTypeLabel = User::getArrayAttendanceType();
+            $this->_attendanceTypeLabel = $attendanceTypeLabel[$this->attendance_type];
+        }
+        
+        return $this->_attendanceTypeLabel;
+    }
+    
     /**
      * @inheritdoc
      */
