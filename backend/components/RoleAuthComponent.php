@@ -38,4 +38,24 @@ class RoleAuthComponent
     {
         return (Yii::$app->user->can('admin') || Yii::$app->user->can('hrman'));
     }
+    
+    /**
+     * 获取部门负责人权限
+     * 
+     * @return boolean true/false
+     */
+    public static function getDeptMasterRole()
+    {
+        return (Yii::$app->user->can('dept_master') || self::getAdminRole());
+    }
+    
+    /**
+     * 获取普通用户权限
+     * 
+     * @return boolean true/false
+     */
+    public static function getUserRole()
+    {
+        return (Yii::$app->user->can('user') || self::getDeptMasterRole());
+    }
 }

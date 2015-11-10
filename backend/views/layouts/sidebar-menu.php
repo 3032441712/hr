@@ -108,6 +108,22 @@ echo Menu::widget(
                 ]
             ],
             [
+                'label' => '我的部门',
+                'url' => ['#'],
+                'icon' => 'fa fa-heart',
+                'visible' => RoleAuthComponent::getDeptMasterRole(),
+                'options' => [
+                    'class' => 'treeview',
+                ],
+                'items' => [
+                    [
+                        'label' => '成员列表',
+                        'url' => ['/master-dept/index'],
+                        'icon' => 'fa fa-table',
+                    ]
+                ]
+            ],
+            [
                 'label' => '打卡管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',

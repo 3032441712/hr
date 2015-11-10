@@ -38,7 +38,7 @@ class UserRoleController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow' => true,
+                        'allow' => RoleAuthComponent::getUserRole(),
                         'roles' => ['@']
                     ]
                 ]
