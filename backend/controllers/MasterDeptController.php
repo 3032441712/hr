@@ -62,7 +62,7 @@ class MasterDeptController extends CController
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find()->onCondition(['dept_id' => Yii::$app->user->identity->dept_id, 'working_status' => 1])->andWhere('id <> 1'),
+            'query' => User::find()->onCondition(['dept_id' => Yii::$app->user->identity->dept_id, 'status' => 1, 'working_status' => 1])->andWhere('id <> 1'),
         ]);
 
         return $this->render('index', [
