@@ -1,6 +1,6 @@
 <?php
 /**
- * 控制器基本组件,控制项目访问权限.
+ * 普通用户控制器类
  *
  * PHP version 5.5
  *
@@ -11,13 +11,15 @@
  * @version  GIT: $Id$
  * @link     https://github.com/3032441712/hr
  */
+
 namespace app\components;
 
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 /**
- * 控制器基本组件,控制项目访问权限.
+ * 普通用户控制器类
  *
  * PHP version 5.5
  *
@@ -27,13 +29,8 @@ use yii\filters\AccessControl;
  * @license  http://www.168helps.com License
  * @link     https://github.com/3032441712/hr
  */
-class CController extends Controller
+class UserRoleController extends Controller
 {
-    /**
-     * 只有登录的用户才可以访问应用程序的功能
-     * 
-     * @return array
-     */
     public function behaviors()
     {
         return [
@@ -41,10 +38,16 @@ class CController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'allow' => RoleAuthComponent::getAdminRole(),
+                        'allow' => true,
                         'roles' => ['@']
                     ]
                 ]
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
             ],
         ];
     }

@@ -1,35 +1,41 @@
 <?php
-
+/**
+ * 个人信息管理
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\controllers;
 
 use Yii;
 use backend\models\HrPerson;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use app\components\CController;
+use app\components\UserRoleController;
 
 /**
- * PersonController implements the CRUD actions for HrPerson model.
+ * 个人信息管理
+ *
+ * PHP version 5.5
+ *
+ * @category backend\controllers
+ * @package  backend\controllers
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @link     https://github.com/3032441712/hr
  */
-class PersonController extends CController
+class PersonController extends UserRoleController
 {
-    public function behaviors()
-    {
-        $verbs = [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
-                ],
-            ],
-        ];
-
-        return array_merge(parent::behaviors(), $verbs);
-    }
-
     /**
-     * Displays a single HrPerson model.
+     * 显示员工基本基本信息详情
+     * 
      * @param integer $id
+     * 
      * @return mixed
      */
     public function actionView($id)
@@ -40,9 +46,12 @@ class PersonController extends CController
     }
 
     /**
-     * Updates an existing HrPerson model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * 员工更新自己的基本信息.
+     * 这里传递的id是没有作用的.默认取登录员工自身的id.
+     * 无法修改他人的基本信息
+     * 
      * @param integer $id
+     * 
      * @return mixed
      */
     public function actionUpdate($id)
@@ -99,7 +108,9 @@ class PersonController extends CController
     /**
      * Finds the HrPerson model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     * 
      * @param integer $id
+     * 
      * @return HrPerson the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */

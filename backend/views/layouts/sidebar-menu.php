@@ -1,5 +1,16 @@
 <?php
+/**
+ * 系统导航按钮
+ *
+ * PHP version 5.5
+ *
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 use common\widgets\Menu;
+use app\components\RoleAuthComponent;
 
 echo Menu::widget(
     [
@@ -17,6 +28,7 @@ echo Menu::widget(
                 'label' => '员工管理',
                 'url' => ['#'],
                 'icon' => 'fa-user',
+                'visible' => RoleAuthComponent::getAdminRole(),
                 'options' => [
                     'class' => 'treeview',
                  ],
@@ -42,6 +54,7 @@ echo Menu::widget(
             'label' => '部门管理',
                 'url' => ['#'],
                 'icon' => 'fa-folder',
+                'visible' => RoleAuthComponent::getAdminRole(),
                 'options' => [
                     'class' => 'treeview',
                  ],
@@ -77,6 +90,7 @@ echo Menu::widget(
                 'label' => '公告管理',
                 'url' => ['#'],
                 'icon' => 'fa fa-envelope',
+                'visible' => RoleAuthComponent::getAdminRole(),
                 'options' => [
                     'class' => 'treeview',
                  ],
@@ -97,7 +111,7 @@ echo Menu::widget(
                 'label' => '打卡管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
-                'visible' => Yii::$app->user->can('admin'),
+                'visible' => false,
                 'items' => [
                     [
                         'label' => '打卡管理',
@@ -110,7 +124,7 @@ echo Menu::widget(
                 'label' => '请假管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
-                'visible' => Yii::$app->user->can('admin'),
+                'visible' => false,
                 'items' => [
                     [
                         'label' => '请假管理',
@@ -123,7 +137,7 @@ echo Menu::widget(
                 'label' => '物料管理',
                 'url' => Yii::$app->homeUrl,
                 'icon' => 'fa-folder',
-                'visible' => Yii::$app->user->can('admin'),
+                'visible' => false,
                 'items' => [
                     [
                         'label' => '物料管理',
@@ -136,7 +150,7 @@ echo Menu::widget(
                 'label' => '系统列表',
                 'url' => ['/os/index'],
                 'icon' => 'fa-folder',
-                'visible' => Yii::$app->user->can('admin'),
+                'visible' => false,
                 'items' => [
                     [
                         'label' => '系统列表',
@@ -152,7 +166,7 @@ echo Menu::widget(
                 'options' => [
                     'class' => 'treeview',
                 ],
-                'visible' => Yii::$app->user->can('admin'),
+                'visible' => false,
                 'items' => [
                     [
                         'label' => Yii::t('app', 'Role'),
