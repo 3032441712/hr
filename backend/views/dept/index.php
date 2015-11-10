@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hr-dept-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="display: none;"><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('添加部门', ['create'], ['class' => 'btn btn-success']) ?>

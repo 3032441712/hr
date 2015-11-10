@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = '更新';
 ?>
 <div class="hr-dept-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 style="display: none;"><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
