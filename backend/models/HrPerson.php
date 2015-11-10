@@ -134,12 +134,19 @@ class HrPerson extends UserBaseModel
 
     public function beforeSave($insert)
     {
+        $time = time();
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord || (!$this->isNewRecord && $this->password)) {
                 $this->setPassword($this->password);
                 $this->generateAuthKey();
                 $this->generatePasswordResetToken();
             }
+            
+            if ($this->isNewRecord) {
+                $this->created_at = $time;
+            }
+            
+            $this->updated_at = $time;
             return true;
         }
         return false;
