@@ -1,6 +1,7 @@
 <?php
 use backend\assets\AppAsset;
 use yii\web\JqueryAsset;
+use yii\helpers\Url;
 AppAsset::register($this);
 $this->registerJsFile("@web/js/jquery.galleriffic.js", ['depends' => JqueryAsset::className()]);
 $this->registerJsFile("@web/js/jquery.opacityrollover.js", ['depends' => JqueryAsset::className()]);
@@ -35,10 +36,10 @@ $this->registerJs("
         renderNavControls:         true,
         playLinkText:              '开始播放',
         pauseLinkText:             '暂停播放',
-        prevLinkText:              '&lsaquo; 上一页',
-        nextLinkText:              '下一页 &rsaquo;',
+        prevLinkText:              '&lsaquo; 上一章',
+        nextLinkText:              '下一章 &rsaquo;',
         nextPageLinkText:          '下一页 &rsaquo;',
-        prevPageLinkText:          '&lsaquo; Prev',
+        prevPageLinkText:          '&lsaquo; 上一页',
         enableHistory:             false,
         autoStart:                 false,
         syncTransitions:           true,
@@ -56,6 +57,8 @@ $this->registerJs("
             this.fadeTo('fast', 1.0);
         }
     });
+    
+    $('#page').css('height', $(document.body).height() + 10);
 ");
 ?>
 <?php $this->beginPage() ?>
@@ -106,6 +109,7 @@ $this->registerJs("
             }
             div#page {
                 width: 100%;
+            	height: 1754px;
                 background-color: #fff;
                 margin: 0 auto;
                 text-align: left;
@@ -115,6 +119,7 @@ $this->registerJs("
             }
             div#container {
                 padding: 20px;
+            	height: 100%;
             }
             div#ads {
                 clear: both;
@@ -131,7 +136,7 @@ $this->registerJs("
                 /* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
                 display: none;
                 float: right;
-                width: 550px; 
+                width: 80%; 
             }
             div.content a, div.navigation a {
                 text-decoration: none;
@@ -156,7 +161,7 @@ $this->registerJs("
             div.slideshow-container {
                 position: relative;
                 clear: both;
-                height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
+                height: 1px; /* This should be set to be at least the height of the largest image in the slideshow */
             }
             div.loader {
                 position: absolute;
@@ -179,9 +184,9 @@ $this->registerJs("
             }
             div.slideshow a.advance-link {
                 display: block;
-                width: 550px;
-                height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
-                line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow */
+                width: 100%;
+                height: 100%; /* This should be set to be at least the height of the largest image in the slideshow */
+                line-height: 100%; /* This should be set to be at least the height of the largest image in the slideshow */
                 text-align: center;
             }
             div.slideshow a.advance-link:hover, div.slideshow a.advance-link:active, div.slideshow a.advance-link:visited {
@@ -245,6 +250,8 @@ $this->registerJs("
             ul.thumbs img {
                 border: none;
                 display: block;
+            	width: 100px;
+            	height: 100px;
             }
             div.pagination {
                 clear: both;
@@ -293,24 +300,16 @@ $this->registerJs("
                 </div>
                 <div id="thumbs" class="navigation">
                     <ul class="thumbs noscript">
+                    <?php for($i = 1; $i <= 30; $i++):?>
                         <li>
-                            <a class="thumb" name="leaf" href="adminlte/img/avatar3.png" title="Title #0">
-                                <img src="adminlte/img/avatar3.png" alt="Title #0" />
+                            <a class="thumb" name="leaf" href="<?php echo Url::to(['person/read', 'id' => $i])?>" title="第<?php echo $i ?>章">
+                                <img src="<?php echo Url::to(['person/read', 'id' => $i])?>" alt="第<?php echo $i ?>章" />
                             </a>
                             <div class="caption">
-                                <div class="image-title">Title #0</div>
-                                <div class="image-desc">Description</div>
+                                <div class="image-title">&nbsp;</div>
                             </div>
                         </li>
-                        <li>
-                            <a class="thumb" name="leaf" href="adminlte/img/avatar3.png" title="Title #0">
-                                <img src="adminlte/img/avatar3.png" alt="Title #0" />
-                            </a>
-                            <div class="caption">
-                                <div class="image-title">Title #0</div>
-                                <div class="image-desc">Description</div>
-                            </div>
-                        </li>
+                    <?php endfor;?>
                     </ul>
                 </div>
                 <div style="clear: both;"></div>

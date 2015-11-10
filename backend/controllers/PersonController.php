@@ -68,6 +68,33 @@ class PersonController extends CController
     {
         return $this->renderPartial('book');
     }
+    
+    /**
+     * 通过PHP来进行员工手册图片的输出
+     * 
+     * @param integer 员工手册的图片ID
+     * 
+     * @return mixed
+     */
+    public function actionRead($id)
+    {
+        $imagename = '0';
+        if ($id < 10) {
+            $imagename .= '0'.$id;
+        } else {
+            $imagename .= $id;
+        }
+        // 定义图片头
+        header('Content-type: image/jpeg');
+        $filename = Yii::getAlias('@webroot').DIRECTORY_SEPARATOR.'book'.DIRECTORY_SEPARATOR.$imagename.'.jpg';
+        if (file_exists($filename)) {
+            echo file_get_contents($filename);
+        } else {
+            echo 'SUCCESS';
+        }
+        
+        Yii::$app->end();
+    }
 
     /**
      * Finds the HrPerson model based on its primary key value.
