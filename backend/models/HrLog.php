@@ -1,4 +1,16 @@
 <?php
+/**
+ * 系统日志数据处理模块
+ *
+ * PHP version 5.5
+ *
+ * @category backend\models
+ * @package  backend\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace app\models;
 
 use Yii;
@@ -30,6 +42,11 @@ class HrLog extends DateTimeModel
     
     private $_userLabel;
     
+    /**
+     * 根据用户的id获取用户名称
+     * 
+     * @return string
+     */
     public function getUserLabel()
     {
         if ($this->_userLabel == null) {

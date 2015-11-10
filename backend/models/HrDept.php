@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 部门信息数据处理模块
+ *
+ * PHP version 5.5
+ *
+ * @category app\models
+ * @package  app\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace app\models;
 
 use Yii;
@@ -55,6 +66,11 @@ class HrDept extends DateTimeModel
         ];
     }
 
+    /**
+     * 获取员工姓名
+     * 
+     * @return string
+     */
     public function getUserLabel()
     {
         if ($this->master_user > 0) {

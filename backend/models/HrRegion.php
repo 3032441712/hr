@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 系统省市区信息模块
+ *
+ * PHP version 5.5
+ *
+ * @category backend\models
+ * @package  backend\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace app\models;
 
 use Yii;
@@ -34,6 +45,13 @@ class HrRegion extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * 根据省市区的ID获取名称
+     * 
+     * @param array $ids ID数组
+     * 
+     * @return string
+     */
     public static function getAreaTitle($ids)
     {
         $data = self::find()->onCondition(['region_id' => $ids])->select('region_name')->asArray()->all();

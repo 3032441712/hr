@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 用户个人信息处理模块
+ *
+ * PHP version 5.5
+ *
+ * @category backend\models
+ * @package  backend\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\models;
 
 use Yii;

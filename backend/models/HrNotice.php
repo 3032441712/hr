@@ -1,5 +1,16 @@
 <?php
-
+/**
+ * 系统公告数据处理模块
+ *
+ * PHP version 5.5
+ *
+ * @category backend\models
+ * @package  backend\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace app\models;
 
 use Yii;
@@ -54,6 +65,11 @@ class HrNotice extends DateTimeModel
         ];
     }
     
+    /**
+     * 获取最后发表的系统公告
+     * 
+     * @return mixed
+     */
     public static function getLastNoticeArray()
     {
         return self::find()->orderBy('id DESC')->limit('1')->asArray()->one();

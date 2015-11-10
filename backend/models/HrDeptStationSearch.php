@@ -1,4 +1,16 @@
 <?php
+/**
+ * 部门岗位信息数据检索模块
+ *
+ * PHP version 5.5
+ *
+ * @category backend\models
+ * @package  backend\models
+ * @author   zhaoyan <1210965963@qq.com>
+ * @license  http://www.168helps.com License
+ * @version  GIT: $Id$
+ * @link     https://github.com/3032441712/hr
+ */
 namespace backend\models;
 
 use yii\base\Model;
@@ -21,6 +33,13 @@ class HrDeptStationSearch extends HrDeptStation
         return Model::scenarios();
     }
     
+    /**
+     * 可以根据部门ID检索岗位
+     * 
+     * @param array $params 参数
+     * 
+     * @return ActiveDataProvider
+     */
     public function search($params)
     {
         $query = HrDeptStation::find();
