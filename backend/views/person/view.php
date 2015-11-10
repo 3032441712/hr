@@ -8,12 +8,12 @@ use app\models\HrRegion;
 /* @var $model backend\models\HrPerson */
 
 $this->title = $model->real_name;
-$this->params['breadcrumbs'][] = ['label' => '编辑个人信息', 'url' => ['update', 'id' => $model->id]];
+// $this->params['breadcrumbs'][] = ['label' => '编辑个人信息', 'url' => ['update', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hr-person-view">
 
-    <p>
+    <p style="display: none;">
         <?= Html::a('编辑个人信息', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
