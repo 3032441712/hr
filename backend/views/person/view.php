@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hr-person-view">
 
-    <p style="display: none;">
-        <?= Html::a('编辑个人信息', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+    <p>
+        <?= Html::a('修改密码', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

@@ -5,7 +5,7 @@
 
 $this->title = $model->real_name;
 $this->params['breadcrumbs'][] = ['label' => $model->real_name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = '编辑个人信息';
+$this->params['breadcrumbs'][] = '修改密码';
 ?>
 <div class="hr-person-update">
 

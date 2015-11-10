@@ -85,6 +85,9 @@ class HrPerson extends UserBaseModel
             'user-update' => [
                 'real_name', 'sex', 'marital_status', 'birthday', 'email', 'password', 'repassword', 'province', 'city', 'district',
                 'address', 'zipcode', 'qq', 'office_phone', 'home_phone', 'mobile_phone'
+            ],
+            'user-update-pass' => [
+                'password', 'repassword'
             ]
         ];
     }

@@ -56,17 +56,16 @@ class PersonController extends UserRoleController
      */
     public function actionUpdate($id)
     {
-        return $this->redirect(['view', 'id' => $id]);
-//         $model = $this->findModel(Yii::$app->user->id);
-//         $model->setScenario('user-update');
+        $model = $this->findModel(Yii::$app->user->id);
+        $model->setScenario('user-update-pass');
 
-//         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//             return $this->redirect(['view', 'id' => $model->id]);
-//         } else {
-//             return $this->render('update', [
-//                 'model' => $model,
-//             ]);
-//         }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**

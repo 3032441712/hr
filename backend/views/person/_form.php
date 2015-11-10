@@ -13,24 +13,24 @@ $this->registerJsFile("@web/adminlte/js/plugins/datepicker/bootstrap-datepicker.
 $this->registerJsFile("@web/adminlte/js/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js", ['depends' => JqueryAsset::className()]);
 $this->registerJsFile("@web/js/area.js", ['depends' => JqueryAsset::className()]);
 
-$this->registerJs('
-    $("#birthday").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
-    init_area("user-province", "user-city", "user-district");
-    $("#user-province").change(function() {
-        v = $(this).val();
-        $(this).attr("data", v);
-        area_change(v, $("#user-city"));
-        init_area("user-province", "user-city", "user-district");
-    });
-    $("#user-city").change(function(){
-        $(this).attr("data", $(this).val());
-        init_area("user-province", "user-city", "user-district");
-    });
-    $("#user-district").change(function(){
-        $(this).attr("data", $(this).val());
-        init_area("user-province", "user-city", "user-district");
-    });
-');
+// $this->registerJs('
+//     $("#birthday").datepicker({format:"yyyy-mm-dd", startDate: new Date(1900,01,01), language:"zh-CN"});
+//     init_area("user-province", "user-city", "user-district");
+//     $("#user-province").change(function() {
+//         v = $(this).val();
+//         $(this).attr("data", v);
+//         area_change(v, $("#user-city"));
+//         init_area("user-province", "user-city", "user-district");
+//     });
+//     $("#user-city").change(function(){
+//         $(this).attr("data", $(this).val());
+//         init_area("user-province", "user-city", "user-district");
+//     });
+//     $("#user-district").change(function(){
+//         $(this).attr("data", $(this).val());
+//         init_area("user-province", "user-city", "user-district");
+//     });
+// ');
 ?>
 <style>
 <!--
@@ -44,16 +44,21 @@ div.area-control select{
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'real_name', ['labelOptions' => ['label' => '姓名']])->textInput(['maxlength' => 64]) ?>
+    <?= $form->field($model, 'password', ['labelOptions' => ['label' => '输入密码']])->passwordInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'sex')->dropDownList(User::getArraySex()) ?>
+    <?= $form->field($model, 'repassword', ['labelOptions' => ['label' => '确认密码']])->passwordInput(['maxlength' => 255]) ?>
+    
+    <?php $form->field($model, 'real_name', ['labelOptions' => ['label' => '姓名']])->textInput(['maxlength' => 64]) ?>
 
-    <?= $form->field($model, 'birthday')->textInput() ?>
+    <?php $form->field($model, 'sex')->dropDownList(User::getArraySex()) ?>
 
-    <?= $form->field($model, 'email', ['labelOptions' => ['label' => '邮箱']])->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'birthday')->textInput() ?>
 
-    <?= $form->field($model, 'marital_status')->dropDownList(User::getArrayMaritalStatus()) ?>
+    <?php $form->field($model, 'email', ['labelOptions' => ['label' => '邮箱']])->textInput(['maxlength' => true]) ?>
 
+    <?php $form->field($model, 'marital_status')->dropDownList(User::getArrayMaritalStatus()) ?>
+
+    <!--
     <div class="form-group field-user-country">
         <label for="user-role" class="control-label">籍贯</label>
         <div class="area-control">
@@ -68,18 +73,19 @@ div.area-control select{
             </select>
         </div>
     </div>
+    -->
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'zipcode')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'qq')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'qq')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'office_phone')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'office_phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'home_phone')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'home_phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'mobile_phone')->textInput(['maxlength' => true]) ?>
+    <?php $form->field($model, 'mobile_phone')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('编辑', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
