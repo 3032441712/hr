@@ -85,6 +85,7 @@ class DeptController extends CController
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'data' => HrDept::find()->asArray()->all()
             ]);
         }
     }
@@ -104,6 +105,7 @@ class DeptController extends CController
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'data' => HrDept::find()->asArray()->all()
             ]);
         }
     }
