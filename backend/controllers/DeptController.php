@@ -54,12 +54,8 @@ class DeptController extends CController
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => HrDept::find(),
-        ]);
-
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'data' => HrDept::find()->asArray()->all(),
         ]);
     }
 
