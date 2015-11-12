@@ -89,7 +89,7 @@ class HrDept extends DateTimeModel
      */
     public static function getArrayDept()
     {
-        return ArrayHelper::map(self::find()->select('id, title')->asArray()->all(), 'id', 'title');
+        return ArrayHelper::map(self::getArrayAppendDept(self::find()->select('id, title')->asArray()->all()), 'id', 'title');
     }
     
     /**
