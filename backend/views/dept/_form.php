@@ -81,6 +81,14 @@ $this->registerJs("
         var obj = $('#tree').treeview('getSelected');
         if (obj != '') {
             selected = obj[0]['id'];
+            <?php if ($model->id):?>
+            
+            if (<?php echo $model->id ?> == selected) {
+                alert('自己不能变为自己的上级部门');
+                return false;
+            }
+            
+            <?php endif;?>
             $('#hrdept-parent_id_title').val(deptData[selected]);
             $('#hrdept-parent_id').val(selected);
             $('#myModal').modal('hide');
@@ -92,5 +100,8 @@ $this->registerJs("
     <?php if ($model->id):?>
     document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo $model->parent_id?>];
     document.getElementById('hrdept-parent_id').value = <?php echo $model->parent_id?>;
+    <?php else:?>
+    document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo Yii::$app->request->get('parent', 0); ?>];
+    document.getElementById('hrdept-parent_id').value = <?php echo Yii::$app->request->get('parent', 0); ?>;
     <?php endif;?>
 </script>
