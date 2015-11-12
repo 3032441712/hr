@@ -91,6 +91,18 @@ class HrDept extends DateTimeModel
     {
         return ArrayHelper::map(self::find()->select('id, title')->asArray()->all(), 'id', 'title');
     }
+    
+    /**
+     * 追加总部到部门信息列表
+     *
+     * @param array $data 部门数组
+     *
+     * @return array
+     */
+    public static function getArrayAppendDept($data)
+    {
+        return array_merge([['id' => 0, 'parent_id' => '0', 'master_user' => '0', 'title' => '总部', 'created_at' => '2015-10-31 16:08:23', 'updated_at' => '2015-10-31 16:08:23']], $data);
+    }
 
     /**
      * 数据保存之后写入日志文件

@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use backend\models\User;
 use yii\web\JqueryAsset;
 use backend\helpers\UtilHelper;
+use yii\helpers\ArrayHelper;
+use app\models\HrDept;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\HrDept */
@@ -18,6 +20,7 @@ $this->registerJs("
     $('#tree').treeview({
         data: data
     });
+    $('#tree').treeview('expandAll');
 ");
 ?>
 
@@ -47,7 +50,7 @@ $this->registerJs("
     
     <div class="form-group field-hrdept-parent_id">
         <label class="control-label" for="hrdept-parent_id">上级部门</label>
-        <input onclick="select_parent_dept();" type="text" readonly="readonly" class="form-control" style="cursor: pointer;" title="单击选择部门" value="总部" />
+        <input onclick="select_parent_dept();" type="text" readonly="readonly" id="hrdept-parent_id_title" class="form-control" style="cursor: pointer;" title="单击选择部门" value="总部" />
         <input type="hidden" id="hrdept-parent_id" class="form-control" name="HrDept[parent_id]" value="0">
         <div class="help-block"></div>
     </div>
@@ -67,6 +70,7 @@ $this->registerJs("
 </div>
 
 <script type="text/javascript">
+    var deptData = <?php echo json_encode(ArrayHelper::map(HrDept::getArrayAppendDept($data), 'id', 'title')); ?>;
     function select_parent_dept()
     {
         $('#myModal').modal('show');
@@ -76,10 +80,17 @@ $this->registerJs("
     {
         var obj = $('#tree').treeview('getSelected');
         if (obj != '') {
-            alert(obj[0]['id']);
+            selected = obj[0]['id'];
+            $('#hrdept-parent_id_title').val(deptData[selected]);
+            $('#hrdept-parent_id').val(selected);
             $('#myModal').modal('hide');
         } else {
             alert('请选择一个部门,然后点击确定按钮.');
         }
     }
+
+    <?php if ($model->id):?>
+    document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo $model->parent_id?>];
+    document.getElementById('hrdept-parent_id').value = <?php echo $model->parent_id?>;
+    <?php endif;?>
 </script>

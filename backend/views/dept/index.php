@@ -1,8 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\helpers\Url;
 use yii\web\JqueryAsset;
 use backend\helpers\UtilHelper;
 
@@ -23,6 +21,7 @@ $this->registerJs("
         selectedBackColor : 'tan',
         showTags: true
     });
+    $('#tree').treeview('expandAll');
 ");
 ?>
 <div class="hr-dept-index">
