@@ -166,11 +166,12 @@ class Menu extends \yii\widgets\Menu
                 return false;
             }
             unset($item['url']['#']);
-            if (count($item['url']) > 1) {
-                foreach (array_splice($item['url'], 1) as $name => $value) {
-                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
-                        return false;
-                    }
+            if (count($item['url']) < 1) {
+                return false;
+            }
+            foreach (array_splice($item['url'], 1) as $name => $value) {
+                if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                    return false;
                 }
             }
 
