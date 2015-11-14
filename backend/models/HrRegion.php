@@ -54,7 +54,7 @@ class HrRegion extends \yii\db\ActiveRecord
      */
     public static function getAreaTitle($ids)
     {
-        $data = self::find()->onCondition(['region_id' => $ids])->select('region_name')->asArray()->all();
+        $data = static::find()->onCondition(['region_id' => $ids])->select('region_name')->asArray()->all();
 
         return $data[0]['region_name'] . ' ' . $data[1]['region_name'] . ' ' . $data[2]['region_name'];
     }

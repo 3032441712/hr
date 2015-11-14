@@ -89,7 +89,7 @@ class HrDeptStation extends DateTimeModel
      */
     public static function getTitleByPrimaryKey($id)
     {
-        return self::findOne(['id' => $id])->title;
+        return static::findOne(['id' => $id])->title;
     }
 
     /**

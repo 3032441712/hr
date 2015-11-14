@@ -72,7 +72,7 @@ class HrNotice extends DateTimeModel
      */
     public static function getLastNoticeArray()
     {
-        return self::find()->orderBy('id DESC')->limit('1')->asArray()->one();
+        return static::find()->orderBy('id DESC')->limit('1')->asArray()->one();
     }
 
     /**

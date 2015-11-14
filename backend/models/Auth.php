@@ -106,7 +106,7 @@ class Auth extends \yii\db\ActiveRecord
         if ($this->validate()) {
             $auth = Yii::$app->getAuthManager();
             $role = $auth->createRole($this->name);
-            $role->description = $this->description;;
+            $role->description = $this->description;
             if ($auth->add($role)) {
                 foreach ($permissions as $permission) {
                     $obj = $auth->getPermission($permission);

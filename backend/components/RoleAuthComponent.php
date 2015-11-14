@@ -36,7 +36,7 @@ class RoleAuthComponent
      */
     public static function getAdminRole()
     {
-        return (Yii::$app->user->can('admin') || Yii::$app->user->can('hrman'));
+        return Yii::$app->user->can('hrman');
     }
     
     /**
@@ -46,7 +46,7 @@ class RoleAuthComponent
      */
     public static function getDeptMasterRole()
     {
-        return (Yii::$app->user->can('dept_master') || self::getAdminRole());
+        return Yii::$app->user->can('dept_master');
     }
     
     /**
@@ -56,6 +56,6 @@ class RoleAuthComponent
      */
     public static function getUserRole()
     {
-        return (Yii::$app->user->can('user') || self::getDeptMasterRole());
+        return Yii::$app->user->can('user');
     }
 }

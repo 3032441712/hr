@@ -2,8 +2,6 @@
 namespace backend\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
-use app\models\HrDept;
 use app\models\HrLog;
 
 /**
@@ -74,11 +72,11 @@ class User extends \common\models\User
             ['email', 'email'],
             // Repassword
             ['repassword', 'compare', 'compareAttribute' => 'password'],
-            //['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            //['status', 'default', 'value' => static::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [static::STATUS_ACTIVE, static::STATUS_INACTIVE, static::STATUS_DELETED]],
 
             // Status
-            ['role', 'in', 'range' => array_keys(self::getArrayRole())],
+            ['role', 'in', 'range' => array_keys(static::getArrayRole())],
         ];
     }
 

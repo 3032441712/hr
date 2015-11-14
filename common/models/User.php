@@ -47,11 +47,11 @@ class User extends UserBaseModel implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'default', 'value' => static::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [static::STATUS_ACTIVE, static::STATUS_DELETED]],
 
-            ['role', 'default', 'value' => self::ROLE_USER],
-            ['role', 'in', 'range' => [self::ROLE_USER]],
+            ['role', 'default', 'value' => static::ROLE_USER],
+            ['role', 'in', 'range' => [static::ROLE_USER]],
         ];
     }
 
@@ -79,7 +79,7 @@ class User extends UserBaseModel implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['id' => $id, 'status' => static::STATUS_ACTIVE]);
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends UserBaseModel implements IdentityInterface
 
         return static::findOne([
             'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
+            'status' => static::STATUS_ACTIVE,
         ]);
     }
 
@@ -157,7 +157,6 @@ class User extends UserBaseModel implements IdentityInterface
      */
     public function validatePassword($password)
     {
-//         return Yii::$app->security->validatePassword($password, $this->password_hash);
         return md5($password) === $this->password_hash;
     }
 
@@ -168,7 +167,6 @@ class User extends UserBaseModel implements IdentityInterface
      */
     public function setPassword($password)
     {
-//         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
         $this->password_hash = md5($password);
     }
 

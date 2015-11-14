@@ -114,6 +114,6 @@ class HrLog extends DateTimeModel
             'updated_at' => $datetime
         ];
 
-        return self::getDb()->createCommand()->insert(self::tableName(), $attribute)->execute();
+        return static::getDb()->createCommand()->insert(static::tableName(), $attribute)->execute();
     }
 }

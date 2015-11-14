@@ -130,7 +130,6 @@ class UserController extends CController
      */
     public function actionDelete($id)
     {
-//         $this->findModel($id)->delete();
         $model = $this->findModel($id);
         if (false == empty($model)) {
             $model->updateAttributes(['status' => User::STATUS_DELETED]);

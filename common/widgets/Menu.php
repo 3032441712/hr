@@ -26,11 +26,11 @@ class Menu extends \yii\widgets\Menu
      */
     protected function renderItem($item)
     {
-        if(isset($item['items']))
+        if (isset($item['items'])) {
             $linkTemplate = '<a href="{url}">{icon} {label} <i class="fa fa-angle-left pull-right"></i></a>';
-        else
+        } else {
             $linkTemplate = $this->linkTemplate;
-
+        }
 
         if (isset($item['url'])) {
             $template = ArrayHelper::getValue($item, 'template', $linkTemplate);

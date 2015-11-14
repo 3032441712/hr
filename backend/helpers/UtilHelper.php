@@ -45,7 +45,7 @@ class UtilHelper extends ArrayHelper
             if ($v['parent_id'] == $pid) {
                 $v['text'] = $showEvent ? $v['title'].' &nbsp;<a title=\"添加下级部门\" class=\"fa fa-fw fa-plus-square-o\" onclick=\"create_dept('.$v['id'].')\" href=\"#\"></a>&nbsp;&nbsp;<a title=\"编辑部门信息\" class=\"glyphicon glyphicon-pencil\" style=\"color:green\" onclick=\"update_dept('.$v['id'].','.$pid.')\" href=\"#\"></a>&nbsp;&nbsp;<a title=\"展示部门信息\" class=\"glyphicon glyphicon-eye-open\" style=\"color:green\" onclick=\"view_dept('.$v['id'].','.$pid.')\" href=\"#\"></a>&nbsp;&nbsp;<a title=\"显示部门下的岗位\" class=\"fa fa-fw fa-bars\" style=\"color:green\" onclick=\"dept_station_list('.$v['id'].')\" href=\"#\"></a>' : $v['title'];
                 $arr[$k] = $v;
-                $arr[$k]['nodes'] = self::getDeptTreeData($array, $v['id'], $showEvent);
+                $arr[$k]['nodes'] = static::getDeptTreeData($array, $v['id'], $showEvent);
                 if (count($arr[$k]['nodes']) == 0) {
                     unset($arr[$k]['nodes']);
                 }

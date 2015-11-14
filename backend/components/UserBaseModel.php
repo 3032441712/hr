@@ -251,9 +251,9 @@ class UserBaseModel extends DateTimeModel
     public static function getArrayStatus()
     {
         return [
-            self::STATUS_ACTIVE => Yii::t('app', 'STATUS_ACTIVE'),
-            self::STATUS_INACTIVE => Yii::t('app', 'STATUS_INACTIVE'),
-            self::STATUS_DELETED => Yii::t('app', 'STATUS_DELETED'),
+            static::STATUS_ACTIVE => Yii::t('app', 'STATUS_ACTIVE'),
+            static::STATUS_INACTIVE => Yii::t('app', 'STATUS_INACTIVE'),
+            static::STATUS_DELETED => Yii::t('app', 'STATUS_DELETED'),
         ];
     }
     
@@ -276,7 +276,7 @@ class UserBaseModel extends DateTimeModel
     {
     
         if ($this->_roleLabel === null) {
-            $roles = self::getArrayRole();
+            $roles = static::getArrayRole();
             $this->_roleLabel = $roles[$this->role];
         }
         return $this->_roleLabel;
@@ -304,7 +304,7 @@ class UserBaseModel extends DateTimeModel
      */
     public static function getArrayUser($deptId)
     {
-        return ArrayHelper::map(self::find()->select('id, real_name')->onCondition('id <> 1 AND dept_id = '.$deptId)->asArray()->all(), 'id', 'real_name');
+        return ArrayHelper::map(static::find()->select('id, real_name')->onCondition('id <> 1 AND dept_id = '.$deptId)->asArray()->all(), 'id', 'real_name');
     }
     
     /**
