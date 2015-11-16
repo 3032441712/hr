@@ -155,29 +155,34 @@ class Menu extends \yii\widgets\Menu
      */
     protected function isItemActive($item)
     {
-        if (isset($item['url']) && is_array($item['url']) && isset($item['url'][0])) {
-            $route = $item['url'][0];
-            if ($route[0] !== '/' && Yii::$app->controller) {
-                $route = Yii::$app->controller->module->getUniqueId() . '/' . $route;
-            }
-            $arrayRoute = explode('/', ltrim($route, '/'));
-            $arrayThisRoute = explode('/', $this->route);
-            if ($arrayRoute[0] !== $arrayThisRoute[0]) {
-                return false;
-            }
-            unset($item['url']['#']);
-            if (count($item['url']) < 1) {
-                return false;
-            }
-            foreach (array_splice($item['url'], 1) as $name => $value) {
-                if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
-                    return false;
+        $bool = true;
+        try {
+            if (isset($item['url']) && is_array($item['url']) && isset($item['url'][0])) {
+                $route = $item['url'][0];
+                if ($route[0] !== '/' && Yii::$app->controller) {
+                    $route = Yii::$app->controller->module->getUniqueId() . '/' . $route;
+                }
+                $arrayRoute = explode('/', ltrim($route, '/'));
+                $arrayThisRoute = explode('/', $this->route);
+                if ($arrayRoute[0] !== $arrayThisRoute[0]) {
+                    throw new \yii\base\InvalidParamException("Invalid Parameter");
+                }
+                unset($item['url']['#']);
+                if (count($item['url']) < 1) {
+                    throw new \yii\base\InvalidValueException("Invalid Return Value");
+                }
+                foreach (array_splice($item['url'], 1) as $name => $value) {
+                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                        throw new \yii\base\InvalidParamException("Invalid Parameter");
+                    }
                 }
             }
-
-            return true;
+        } catch (\yii\base\InvalidValueException $e) {
+            $bool = true;
+        } catch (\Exception $e) {
+            $bool = false;
         }
 
-        return false;
+        return $bool;
     }
 }
