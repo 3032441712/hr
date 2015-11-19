@@ -25,8 +25,13 @@ class AuthTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($rules, $this->_auth->rules());
     }
 
-    public function testhasUsersByRole()
+    public function testHasUsersByRole()
     {
         $this->assertEquals(1, $this->_auth->hasUsersByRole('admin'));
+    }
+
+    public function testHasRolesByPermission()
+    {
+        $this->assertEquals(1, $this->_auth->hasRolesByPermission('admin'));
     }
 }
