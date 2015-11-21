@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerCssFile('@web/css/bootstrap-treeview.min.css');
 $this->registerJsFile("@web/js/bootstrap-treeview.min.js", ['depends' => JqueryAsset::className()]);
 
-$deptTree = [['id' => 0, 'text' => '总部 &nbsp;<a class=\"fa fa-fw fa-plus-square-o\" onclick=\"create_dept(0);\" style=\"color:green\" href=\"#\"></a>', 'nodes' => UtilHelper::getDeptTreeData($data)]];
+$deptTree = UtilHelper::getDeptTreeData($data);
 
 $this->registerJs("
     var data = '".json_encode($deptTree)."';

@@ -13,7 +13,7 @@ use app\models\HrDept;
 /* @var $form yii\widgets\ActiveForm */
 $this->registerCssFile('@web/css/bootstrap-treeview.min.css');
 $this->registerJsFile("@web/js/bootstrap-treeview.min.js", ['depends' => JqueryAsset::className()]);
-$deptTree = [['id' => 0, 'text' => '总部', 'nodes' => UtilHelper::getDeptTreeData($data, 0, false)]];
+$deptTree = UtilHelper::getDeptTreeData($data, 0, false);
 
 $this->registerJs("
     var data = '".json_encode($deptTree)."';
@@ -70,7 +70,7 @@ $this->registerJs("
 </div>
 
 <script type="text/javascript">
-    var deptData = <?php echo json_encode(ArrayHelper::map(HrDept::getArrayAppendDept($data), 'id', 'title')); ?>;
+    var deptData = <?php echo json_encode(ArrayHelper::map($data, 'id', 'title')); ?>;
     function select_parent_dept()
     {
         $('#myModal').modal('show');
@@ -101,7 +101,7 @@ $this->registerJs("
     document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo $model->parent_id?>];
     document.getElementById('hrdept-parent_id').value = <?php echo $model->parent_id?>;
     <?php else:?>
-    document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo Yii::$app->request->get('parent', 0); ?>];
-    document.getElementById('hrdept-parent_id').value = <?php echo Yii::$app->request->get('parent', 0); ?>;
+    document.getElementById('hrdept-parent_id_title').value = deptData[<?php echo Yii::$app->request->get('parent', 1); ?>];
+    document.getElementById('hrdept-parent_id').value = <?php echo Yii::$app->request->get('parent', 1); ?>;
     <?php endif;?>
 </script>
