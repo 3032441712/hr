@@ -25,7 +25,7 @@ echo Menu::widget(
                 'active' => Yii::$app->request->url === Yii::$app->homeUrl
             ],
             [
-                'label' => '员工管理',
+                'label' => '人员管理',
                 'url' => ['#'],
                 'icon' => 'fa-user',
                 'visible' => RoleAuthComponent::getAdminRole(),
@@ -108,7 +108,7 @@ echo Menu::widget(
                 ]
             ],
             [
-                'label' => '我的部门',
+                'label' => '我的资源',
                 'url' => ['#'],
                 'icon' => 'fa fa-heart',
                 'visible' => RoleAuthComponent::getDeptMasterRole(),
@@ -117,10 +117,40 @@ echo Menu::widget(
                 ],
                 'items' => [
                     [
-                        'label' => '成员列表',
+                        'label' => '知识文档',
+                        'url' => ['#'],
+                        'icon' => 'fa fa-building-o'
+                    ],
+                    [
+                        'label' => '固定资产',
+                        'url' => ['#'],
+                        'icon' => 'fa fa-calendar-o'
+                    ],
+                    [
+                        'label' => '公告通知',
+                        'url' => ['#'],
+                        'icon' => 'fa fa-envelope-o',
+                    ],
+                    [
+                        'label' => '我的消息',
+                        'url' => ['#'],
+                        'icon' => 'fa fa-comment-o',
+                    ],
+                    [
+                        'label' => '我的考勤',
+                        'url' => ['#'],
+                        'icon' => 'fa fa-bell-o'
+                    ],
+                    [
+                        'label' => '我的档案',
+                        'url' => ['person/view', 'id' => 0],
+                        'icon' => 'fa fa-barcode'
+                    ],
+                    [
+                        'label' => '我的联系人',
                         'url' => ['/master-dept/index'],
                         'icon' => 'fa fa-table',
-                    ]
+                    ],
                 ]
             ],
             [

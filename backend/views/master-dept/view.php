@@ -7,7 +7,7 @@ use app\models\HrRegion;
 /* @var $model backend\models\User */
 
 $this->title = $model->real_name;
-$this->params['breadcrumbs'][] = ['label' => '成员列表', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '我的联系人', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
