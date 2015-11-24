@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
-    $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
+    'a8cfe5b9bcdcb70aedd57bac556e3cf1' => $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+    '01b872096dad055849387e42d41a176d' => $vendorDir . '/swiftmailer/swiftmailer/lib/swift_required.php',
 );
